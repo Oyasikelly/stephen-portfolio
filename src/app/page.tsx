@@ -1,103 +1,131 @@
-import Image from "next/image";
+"use client";
+
+import React, { useRef, useState, useCallback, useEffect } from "react";
+import ArticleCard from "@/components/ArticleCard";
+import Button from "@/components/Button";
+import FavouriteTools from "@/components/FavouriteTools";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
+import HeroSection from "@/components/HeroSection";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import portfolioPreviews from "../data/portfolioPreviews";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const [scrollProgress, setScrollProgress] = useState(0);
+	const [cardWidth, setCardWidth] = useState(416); // Default card width
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	// Get dynamic card width on mount and resize
+	useEffect(() => {
+		const updateCardWidth = () => {
+			if (scrollRef.current) {
+				const card = scrollRef.current.querySelector(".article-card");
+				if (card) {
+					const computedStyle = window.getComputedStyle(card);
+					const width = card.clientWidth;
+					const gap = parseInt(computedStyle.gap || "16", 10); // Get gap from CSS (default 16px)
+					setCardWidth(width + gap);
+				}
+			}
+		};
+
+		// Initial calculation
+		updateCardWidth();
+
+		// Update on resize
+		window.addEventListener("resize", updateCardWidth);
+		return () => window.removeEventListener("resize", updateCardWidth);
+	}, []);
+
+	const handleArrowClick = (direction: "left" | "right") => {
+		if (!scrollRef.current) return;
+
+		const container = scrollRef.current;
+		const currentScroll = container.scrollLeft;
+		const containerWidth = container.clientWidth;
+		const maxScroll = container.scrollWidth - containerWidth;
+
+		let newScroll =
+			direction === "left"
+				? Math.max(0, currentScroll - cardWidth)
+				: Math.min(maxScroll, currentScroll + cardWidth);
+
+		container.scrollTo({
+			left: newScroll,
+			behavior: "smooth",
+		});
+	};
+
+	const updateScrollProgress = useCallback(() => {
+		if (scrollRef.current) {
+			const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+			const maxScroll = scrollWidth - clientWidth;
+			if (maxScroll > 0) {
+				setScrollProgress(scrollLeft / maxScroll);
+			}
+		}
+	}, []);
+
+	return (
+		<div className="px-4 sm:px-6 md:px-20 lg:px-40">
+			<HeroSection />
+
+			{/* Other sections */}
+			<section className="py-0">
+				<FavouriteTools />
+			</section>
+
+			<section className="py-10 md:py-20">
+				<h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">
+					FEATURED PROJECTS
+				</h2>
+				<div className="space-y-10 md:space-y-20">
+					{portfolioPreviews.map((project) => (
+						<FeaturedProjects
+							key={project.title}
+							title={project.title}
+							image={project.image}
+							link={project.link}>
+							{project.description}
+						</FeaturedProjects>
+					))}
+				</div>
+				<div className="w-fit mt-10 md:mt-20 mx-auto group">
+					<Button url={"/portfolio"}>
+						View more projects{" "}
+						<FaArrowRight className="transition-transform duration-500 ease-in-out group-hover:rotate-[-60deg]" />
+					</Button>
+				</div>
+			</section>
+
+			<section className="shadow-lg shadow-black/10 px-2 py-6 md:py-10">
+				<h2 className="text-2xl md:text-3xl font-extrabold mb-4">Articles</h2>
+
+				<ArticleCard
+					onScroll={updateScrollProgress}
+					ref={scrollRef}
+				/>
+
+				{/* Navigation Arrows */}
+				<div className="flex items-center justify-end gap-2 py-6 md:py-10">
+					<span
+						onClick={() => handleArrowClick("left")}
+						className="cursor-pointer w-fit p-3 hover:bg-[#252e43] rounded-full transition-all duration-300 ease-in-out">
+						<FaArrowLeft />
+					</span>
+					<span
+						onClick={() => handleArrowClick("right")}
+						className="cursor-pointer w-fit p-3 hover:bg-[#252e43] rounded-full transition-all duration-300 ease-in-out">
+						<FaArrowRight />
+					</span>
+				</div>
+
+				{/* Progress bar */}
+				<div className="bg-[#252e43] rounded-xl h-1 mb-10 md:mb-20 w-full overflow-hidden">
+					<div
+						style={{ width: `${scrollProgress * 100}%` }}
+						className="h-full rounded-xl bg-gradient-to-r from-white via-[#bddafe] to-[#9bbce5] transition-all duration-200"></div>
+				</div>
+			</section>
+		</div>
+	);
 }

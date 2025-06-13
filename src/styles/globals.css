@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+	--primary: #080d18;
+	/* --primary: #252e43; */
+	--textColor: #ffffff;
+	--brighterBlue: #9bbce5;
+	/* --brighterBlue: #bddafe; */
+}
+html {
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+
+body {
+	color: var(--textColor);
+	background-color: var(--primary);
+	margin: 0;
+	padding: 0;
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.button {
+	color: var(--textColor);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	/* background-color: var(--brighterBlue); */
+	border: 1px solid var(--brighterBlue);
+	padding: 7px 25px;
+	font-size: 1.2rem;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+.button:hover {
+	background-color: var(--brighterBlue);
+	color: var(--primary);
+}
+.outline {
+	background-color: var(--brighterBlue);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	color: var(--primary);
+}
+.outline:hover {
+	background-color: var(--primary);
+	color: var(--textColor);
+}
+.arrow {
+	transform: rotate(-55deg);
+}
+
+p {
+	color: #ffffffc1;
+}
+/* .button:hover {
+	background-color: #8aa9d4;
+} */
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
