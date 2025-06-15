@@ -21,20 +21,20 @@ export default function Portfolio() {
 				title="Portfolio"
 				page=""
 			/>
-			<div className="flex gap-3 justify-center sm:justify-end items-center px-4 sm:px-6 md:px-10 lg:px-40">
+			<div className="flex gap-2 lg:gap-3 justify-center text-sm md:text-base text-sm md:text-base sm:justify-end items-center mt-4 lg:mt-0 px-4 sm:px-6 md:px-10 lg:px-40">
 				<button
 					onClick={() => handleArrangementChange("list")}
 					className={`${
-						arrangement === "list" ? "bg-[#252e43]" : ""
-					} text-white px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base hover:text-white/30 cursor-pointer hover:bg-[#252e43] rounded-xl transition-all duration-300 ease-in-out flex items-center gap-2`}>
+						arrangement === "list" ? "bg-[#111724] border-animate" : ""
+					} text-white px-2 py-1.5 md:px-3 md:py-2  hover:text-white/30 cursor-pointer hover:bg-[#252e43] rounded-xl transition-all duration-300 ease-in-out flex items-center gap-1 lg:gap-2`}>
 					<FaList />
 					List
 				</button>
 				<button
 					onClick={() => handleArrangementChange("grid")}
 					className={`${
-						arrangement === "grid" ? "bg-[#252e43]" : ""
-					} text-white px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base hover:text-white/30 cursor-pointer hover:bg-[#252e43] rounded-xl transition-all duration-300 ease-in-out flex items-center gap-2`}>
+						arrangement === "grid" ? "bg-[#111724] border-animate" : ""
+					}   text-white px-3 py-1.5 md:px-4 md:py-2  hover:text-white/30 cursor-pointer hover:bg-[#252e43] rounded-xl transition-all duration-300 ease-in-out flex items-center gap-1 lg:gap-2`}>
 					<BsGrid3X3Gap />
 					Grid
 				</button>
@@ -46,7 +46,8 @@ export default function Portfolio() {
 				</section>
 				<div className="w-fit mt-20 pb-20">
 					<Button url={"/portfolio"}>
-						show more <FaArrowRight className="arrow" />
+						show more{" "}
+						<FaArrowRight className="arrow-animate arrow-animate-2 arrow" />
 					</Button>
 				</div>
 			</div>

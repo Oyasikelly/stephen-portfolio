@@ -5,7 +5,7 @@ const Highlights = () => {
 	return (
 		<>
 			<section id="highlights">
-				<p className="py-4 text-base md:text-lg text-white/60">
+				<p className="py-4 text-base md:text-lg text-white/60 ">
 					A <span className="text-[#9bbce5]">Global Talent </span> awardee based
 					in London, United Kingdom that is a self-taught Frontend Heavy
 					Fullstack Software Engineer that builds products with an end-to-end
@@ -45,17 +45,17 @@ const Highlights = () => {
 					He is currently building the future of embedded finance with Montie
 					delivering SDKs and APIs that transforms businesses with fully fledged
 					invoicing, AP/AR functionalities and automations.
-					<br />
+					<br /> <br />
 					He was previously at checkout.com facilitating secure payments across
 					the world, fighting fraud, and maximizing approval rates, read more
 					about his...
-					<br />
+					<br /> <br />
 					Checkout.com is an international financial technology company which
 					processes payments for other companies. Founded as Opus Payments in
 					2009, it is headquartered in London, United Kingdom. It had a
 					valuation of $40 billion USD in 2022, making it the most valuable
 					European fintech startup.
-					<br />
+					<br /> <br />
 					Prior to checkout.com, he worked at Kloud Commerce (formerly
 					PayPecker) as the Frontend Lead, where he collaboratively pioneered
 					the development of a customer-facing and merchant-facing
@@ -64,7 +64,7 @@ const Highlights = () => {
 					outlets in multiple locations) with internal tools for administrative
 					management e.g. handling Know Your Customer (K.Y.C) processes, read
 					more about his...
-					<br />
+					<br /> <br />
 					Over the years, he has consulted for and worked with different
 					companies in diverse industries & sectors like Advertising &
 					Marketing, Oil & gas, Education e.t.c in designing and building

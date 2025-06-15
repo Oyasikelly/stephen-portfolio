@@ -79,11 +79,12 @@ export default function Home() {
 					FEATURED PROJECTS
 				</h2>
 				<div className="space-y-10 md:space-y-20">
-					{portfolioPreviews.map((project) => (
+					{portfolioPreviews.map((project, index) => (
 						<FeaturedProjects
 							key={project.title}
 							title={project.title}
 							image={project.image}
+							index={index.toString()}
 							link={project.link}>
 							{project.description}
 						</FeaturedProjects>

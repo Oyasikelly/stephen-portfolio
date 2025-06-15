@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import { LinkedInIcon, GitHubIcon, MediumIcon, EmailIcon } from "@/data/Icons";
 import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa6";
 
 const HeroSection = () => {
 	return (
@@ -21,9 +22,18 @@ const HeroSection = () => {
 							about me
 						</Link>
 					</p>
-					<div className="flex flex-wrap gap-2 md:gap-4">
-						<Button variant="outline">Book call</Button>
-						<Button>Message me</Button>
+					<div className="flex flex-shrink-0 gap-2 md:gap-4">
+						<Link href="/restricted">
+							<button className="bg-[#9bbce5] border-animate flex flex-shrink-0 items-center text-base md:text-xl gap-2 border-1 border-[#9bbce5] text-[#080d18] font-semibold py-1 px-2 md:py-4 md:px-8 rounded-full hover:bg-[#9bbce5] hover:text-[#080d18]  transition-all duration-500 group">
+								Book call
+							</button>
+						</Link>
+						<Link href="/restricted">
+							<button className="border-animate flex flex-shrink-0 items-center text-base md:text-xl gap-2 border-1 border-[#9bbce5] text-white font-semibold py-1 px-2 md:py-4 md:px-8 rounded-full hover:bg-[#9bbce5] hover:text-[#080d18]  transition-all duration-500 group">
+								Message me{" "}
+								<FaArrowRight className="arrow-animate arrow-animate-2" />{" "}
+							</button>
+						</Link>
 					</div>
 				</div>
 				<div className="w-full md:w-1/2 flex flex-col items-center md:items-end px-4 md:px-0">

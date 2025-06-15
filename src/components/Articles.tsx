@@ -7,8 +7,10 @@ export default function Article() {
 		<>
 			{articles.map((article, index) => (
 				<div
-					key={index}
-					className="w-full bg-[#252e43] rounded-xl p-4">
+					key={1 + index}
+					className={`skill-border-animate skill-border-animate-${
+						1 + index
+					} w-full bg-[#252e43] rounded-xl p-4`}>
 					<div className="h-[200px] sm:h-[250px] md:h-[300px] rounded-xl">
 						<img
 							className="w-full h-full object-cover rounded-xl"

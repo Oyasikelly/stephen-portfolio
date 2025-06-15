@@ -17,14 +17,16 @@ export default function Skills() {
 		<div
 			id="favourite_tools"
 			className="flex flex-col py-6 md:py-10">
-			<h3 className="text-xl md:text-2xl border-b-2 border-[#252e43] font-bold pb-4 md:pb-5">
+			<h3 className="text-xl md:text-2xl border-b-2 border-[#252e43] border-t-2  lg:border-t-0 border-[#252e43] font-bold py-4 md:py-5">
 				Skills
 			</h3>
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mt-4 gap-4">
 				{skills.map((skill, index) => (
 					<div
 						key={index}
-						className="p-2 md:p-4 bg-[#252e43] rounded-lg">
+						className={`skill-border-animate skill-border-animate-${
+							1 + index
+						} p-2 md:p-4 bg-[#252e43] rounded-lg`}>
 						<img
 							src={skill}
 							alt={`Skill ${index + 1}`}

@@ -1,26 +1,22 @@
+"use client";
 import Link from "next/link";
 import { FaArrowUp } from "react-icons/fa6";
 
 const footerLinks = [
-	{
-		name: "Email",
-		href: "#",
-	},
-	{
-		name: "LinkedIn",
-		href: "#",
-	},
-	{
-		name: "GitHub",
-		href: "#",
-	},
-	{
-		name: "Medium",
-		href: "#",
-	},
+	{ name: "Email", href: "#" },
+	{ name: "LinkedIn", href: "#" },
+	{ name: "GitHub", href: "#" },
+	{ name: "Medium", href: "#" },
 ];
 
 export default function Footer() {
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	};
+
 	return (
 		<footer className="pb-10 md:pb-20">
 			<div className="h-[2px] bg-gradient-to-r from-[#080d18] via-[#ffffffb4] to-[#080d18]"></div>
@@ -43,8 +39,10 @@ export default function Footer() {
 							))}
 						</div>
 
-						<span className="cursor-pointer w-fit p-3 hover:text-white/30 hover:bg-[#111724] rounded-xl transition-all duration-300 ease-in-out">
-							<FaArrowUp />
+						<span
+							onClick={scrollToTop}
+							className="cursor-pointer w-fit p-3 hover:text-white/30 hover:bg-[#111724] rounded-xl transition-all duration-300 ease-in-out">
+							<FaArrowUp className="arrow-animate arrow-animate-1" />
 						</span>
 					</div>
 				</div>

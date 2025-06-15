@@ -19,14 +19,14 @@ const Button = ({
 }: ButtonProps) => {
 	const buttonClass = `${
 		variant === "outline" ? "outline" : ""
-	} button transition-all duration-500 group`;
+	} border-animate flex flex-shrink-0 items-center text-base md:text-xl gap-2 border-1 border-[#9bbce5] text-white font-bold py-3 px-4 md:py-2 md:px-6 rounded-full hover:bg-[#9bbce5] hover:text-[#080d18]  transition-all duration-500 group`;
 
 	const arrowIcon = (
-		<FaArrowRight className="transition-transform duration-500 group-hover:rotate-[-60deg]" />
+		<FaArrowRight className="animate-arrow-3 transition-transform duration-500 group-hover:rotate-[-60deg]" />
 	);
 
 	return url ? (
-		<Link href={url}>
+		<Link href="/restricted">
 			<button
 				className={buttonClass}
 				onClick={onClick}>
@@ -35,12 +35,14 @@ const Button = ({
 			</button>
 		</Link>
 	) : (
-		<button
-			className={buttonClass}
-			onClick={onClick}>
-			{children}
-			{variant === "outline" && arrowIcon}
-		</button>
+		<Link href="/restricted">
+			<button
+				className={buttonClass}
+				onClick={onClick}>
+				{children}
+				{variant === "outline" && arrowIcon}
+			</button>
+		</Link>
 	);
 };
 

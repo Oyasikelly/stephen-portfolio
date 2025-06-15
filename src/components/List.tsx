@@ -3,13 +3,14 @@ import { FeaturedProjects } from "./FeaturedProjects";
 import portfolioPreviews from "@/data/portfolioPreviews";
 export default function List() {
 	return (
-		<section className=" flex flex-wrap lg:flex-col items-center">
-			{portfolioPreviews.map((project) => (
+		<section className="flex flex-wrap lg:flex-col items-center">
+			{portfolioPreviews.map((project, index) => (
 				<FeaturedProjects
 					key={project.title}
 					title={project.title}
 					image={project.image}
-					link={project.link}>
+					link={project.link}
+					index={index.toString()}>
 					{project.description}
 				</FeaturedProjects>
 			))}

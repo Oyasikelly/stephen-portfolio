@@ -1,6 +1,5 @@
 import { GoDotFill } from "react-icons/go";
 import portfolioPreviews from "../data/portfolioPreviews";
-import Button from "./Button";
 import { FaArrowRight } from "react-icons/fa6";
 export default function Grid() {
 	return (
@@ -29,9 +28,9 @@ export default function Grid() {
 								<h3>Checkout</h3>
 							</div>
 
-							<button className="border border-white/60 px-4 py-2 flex gap-2 justify-center items-center rounded-full hover:bg-[#080d18] transition-all duration-500 group">
+							<button className="border-animate border border-white/60 px-4 py-2 flex gap-2 justify-center items-center rounded-full hover:bg-[#080d18] transition-all duration-500 group">
 								View
-								<FaArrowRight className="transition-transform duration-500 group-hover:rotate-[-60deg]" />
+								<FaArrowRight className="arrow-animate-1 transition-transform duration-500 group-hover:rotate-[-60deg]" />
 							</button>
 						</div>
 					</div>

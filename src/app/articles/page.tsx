@@ -2,6 +2,7 @@
 import Articles from "@/components/Articles";
 import Button from "@/components/Button";
 import TopHeader from "@/components/TopHeader";
+import { FaArrowRight } from "react-icons/fa6";
 
 export default function ArticlePage() {
 	return (
@@ -17,7 +18,9 @@ export default function ArticlePage() {
 					<Articles />
 				</section>
 				<div className="my-10 md:my-20">
-					<Button>Show more</Button>
+					<Button>
+						Show more <FaArrowRight className="arrow-animate arrow-animate-2" />
+					</Button>
 				</div>
 			</div>
 		</div>

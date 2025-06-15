@@ -7,7 +7,7 @@ export default function FavouriteTools() {
 				<h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10">
 					Favourite Tools
 				</h2>
-				<div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 place-items-center w-full">
 					{[
 						{ icon: "/Favourite_tools/figma.png" },
 						{ icon: "/Favourite_tools/nuxtjs.png" },
@@ -20,7 +20,9 @@ export default function FavouriteTools() {
 					].map((tool, index) => (
 						<div
 							key={1 + index}
-							className="text-center flex-shrink-0 lg:w-16 lg:h-16 w-12 h-12">
+							className={`skill-border-animate skill-border-animate-${
+								1 + index
+							} rounded-lg p-1 text-center flex-shrink-0 lg:w-16 lg:h-16 w-12 h-12}`}>
 							<img
 								src={`/assets/${tool.icon}`}
 								alt={tool.icon.split("/").pop()?.split(".")[0] || "Tool Icon"}

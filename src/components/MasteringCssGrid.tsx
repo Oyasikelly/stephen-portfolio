@@ -1,3 +1,4 @@
+import NextProjects from "@/components/NextProjects";
 import AnyArticle from "./AnyArticle";
 
 interface ArticleProps {
@@ -8,7 +9,7 @@ interface ArticleProps {
 	sections: { id: string; title: string }[];
 }
 
-export default function TheExpectations({ content, sections }: ArticleProps) {
+export default function MasteringCssGrid({ content, sections }: ArticleProps) {
 	return (
 		<>
 			<AnyArticle

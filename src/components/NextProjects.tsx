@@ -3,6 +3,7 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import NextProjectsData from "../data/NextProjects";
+import Link from "next/link";
 
 export default function NextProjects() {
 	const scrollRef = useRef<HTMLDivElement>(null);
@@ -65,14 +66,14 @@ export default function NextProjects() {
 						onClick={() => handleArrowClick("left")}
 						className="bg-black/30 backdrop-blur-sm hover:bg-black/50 rounded-full p-2 transition-all duration-300 transform hover:scale-110 group pointer-events-auto"
 						aria-label="Previous project">
-						<IoIosArrowBack className="text-3xl md:text-4xl text-white group-hover:text-blue-300 transition-colors" />
+						<IoIosArrowBack className="text-xl md:text-4xl text-white group-hover:text-blue-300 transition-colors" />
 					</button>
 
 					<button
 						onClick={() => handleArrowClick("right")}
 						className="bg-black/30 backdrop-blur-sm hover:bg-black/50 rounded-full p-2 transition-all duration-300 transform hover:scale-110 group pointer-events-auto"
 						aria-label="Next project">
-						<IoIosArrowForward className="text-3xl md:text-4xl text-white group-hover:text-blue-300 transition-colors" />
+						<IoIosArrowForward className="text-xl md:text-4xl text-white group-hover:text-blue-300 transition-colors" />
 					</button>
 				</div>
 
@@ -82,33 +83,35 @@ export default function NextProjects() {
 					onScroll={updateScrollProgress}
 					className="flex gap-4 overflow-x-auto hide-scrollbar rounded-2xl px-2 py-4">
 					{NextProjectsData.map((project, index) => (
-						<div
-							key={index}
-							className="next-project-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px]">
-							<div className="flex flex-col md:flex-row justify-between items-center bg-[#252e43] p-4 transition-all hover:bg-[#2d3a54] rounded-xl h-full">
-								{/* Text Content */}
-								<div className="w-full md:w-2/3 mb-6 md:mb-0 md:pr-8">
-									<h2 className="text-xl md:text-2xl font-bold mb-4 text-white">
-										{project.title}
-									</h2>
-									<p className="text-white/80 text-base md:text-sm mb-4">
-										{project.description}
-									</p>
-								</div>
+						<Link
+							key={1 + index}
+							href={project.link}>
+							<div className="next-project-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px]">
+								<div className="flex flex-col md:flex-row justify-between items-center bg-[#252e43] p-4 transition-all hover:bg-[#2d3a54] rounded-xl h-full">
+									{/* Text Content */}
+									<div className="w-full md:w-2/3 mb-6 md:mb-0 md:pr-8">
+										<h2 className="text-1xl md:text-2xl font-bold mb-4 text-white">
+											{project.title}
+										</h2>
+										<p className="text-white/80 text-[12px] md:text-base mb-4">
+											{project.description}
+										</p>
+									</div>
 
-								{/* Image */}
-								<div className="w-full md:w-1/3 flex justify-center">
-									<div className="relative w-full">
-										<img
-											src={project.image}
-											alt={project.title}
-											className="w-full h-40 object-cover rounded-lg shadow-xl"
-										/>
-										<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+									{/* Image */}
+									<div className="w-full md:w-1/3 flex justify-center">
+										<div className="relative w-full">
+											<img
+												src={project.image}
+												alt={project.title}
+												className="w-full h-40 object-cover rounded-lg shadow-xl"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 			</div>

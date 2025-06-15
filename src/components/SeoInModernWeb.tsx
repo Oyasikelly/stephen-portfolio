@@ -8,7 +8,7 @@ interface ArticleProps {
 	sections: { id: string; title: string }[];
 }
 
-export default function TheExpectations({ content, sections }: ArticleProps) {
+export default function SeoInModernWeb({ content, sections }: ArticleProps) {
 	return (
 		<>
 			<AnyArticle
