@@ -10,7 +10,7 @@ export default function List() {
 					title={project.title}
 					image={project.image}
 					link={project.link}
-					index={index.toString()}>
+					index={index}>
 					{project.description}
 				</FeaturedProjects>
 			))}

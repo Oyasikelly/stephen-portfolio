@@ -22,31 +22,38 @@ interface ContentItem {
 }
 
 type PageProps = {
-	params: {
+	params: Promise<{
 		slug: string;
-	};
+	}>;
 };
-
-// // Article data (you can import this from a JSON file later)
 
 // Map slugs to their React components
 const articleComponentMap: Record<string, React.FC<any>> = {
 	"the-expectations": TheExpectations,
 	"mastering-css-grid": MasteringCssGrid,
 	"seo-in-modern-web": SeoInModernWeb,
-	// Add more mappings here...
 };
 
 export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
-	const content = (ArticlesData as Record<string, ContentItem>)[params.slug];
+	const { slug } = await params;
+	const content = (ArticlesData as Record<string, ContentItem>)[slug];
+	if (!content || content.type !== "articles") return notFound();
+
+	return {
+		title: `${content.title} | Stephen's Portfolio`,
+		description: `Read my article about ${content.title}`,
+	};
+}
+
+export default async function ArticlePage({ params }: PageProps) {
+	const { slug } = await params;
+	const content = (ArticlesData as Record<string, ContentItem>)[slug];
 	if (!content || content.type !== "articles") return notFound();
 
 	// Get the appropriate component for the slug
-	const ArticleComponent = articleComponentMap[params.slug];
-
-	// Handle if no component is mapped
+	const ArticleComponent = articleComponentMap[slug];
 	if (!ArticleComponent) return notFound();
 
 	return (

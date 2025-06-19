@@ -30,9 +30,9 @@ const portfolioPreviews = [
             .replace(/\.[a-z]+$/, "")}`,
 	},
 	{
-		title: "datkey.com",
+		title: "Datkey.com",
 		description:
-			" datkey is a financial technology company that processes payments for other companies. With a USD 40 billion valuation in 2022, it was recognised as the most valuable European fintech startup",
+			"Datkey is a financial technology company that processes payments for other companies. With a USD 40 billion valuation in 2022, it was recognised as the most valuable European fintech startup",
 		image: "/assets/portfolio/datkey-preview.png",
 		link: `../datkey.com
             ?.trim()

@@ -17,7 +17,7 @@ const ArticleCard = forwardRef<HTMLDivElement, ArticleCardProps>(
 		return (
 			<div
 				ref={internalRef}
-				className="w-full flex gap-4 overflow-x-auto hide-scrollbar px-2"
+				className="px-4 sm:px-6 md:px-20 lg:px-40  w-full flex gap-4 overflow-x-auto hide-scrollbar px-2"
 				onScroll={onScroll}>
 				{articles.map((article, index) => (
 					<div

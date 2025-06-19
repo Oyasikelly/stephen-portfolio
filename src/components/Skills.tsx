@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LinkedInIcon, GitHubIcon, MediumIcon, EmailIcon } from "../data/Icons";
+import { motion } from "framer-motion";
 
 const skills = [
 	"/assets/Favourite_tools/reactjs.png",
@@ -17,13 +18,22 @@ export default function Skills() {
 		<div
 			id="favourite_tools"
 			className="flex flex-col py-6 md:py-10">
-			<h3 className="text-xl md:text-2xl border-b-2 border-[#252e43] border-t-2  lg:border-t-0 border-[#252e43] font-bold py-4 md:py-5">
+			<motion.h3
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true }}
+				transition={{ duration: 0.5 }}
+				className="text-xl md:text-2xl border-b-2 border-[#252e43] border-t-2  lg:border-t-0 border-[#252e43] font-bold py-4 md:py-5">
 				Skills
-			</h3>
+			</motion.h3>
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mt-4 gap-4">
 				{skills.map((skill, index) => (
-					<div
+					<motion.div
 						key={index}
+						initial={{ opacity: 0, scale: 0.8 }}
+						whileInView={{ opacity: 1, scale: 1 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.4, delay: index * 0.1 }}
 						className={`skill-border-animate skill-border-animate-${
 							1 + index
 						} p-2 md:p-4 bg-[#252e43] rounded-lg`}>
@@ -32,11 +42,15 @@ export default function Skills() {
 							alt={`Skill ${index + 1}`}
 							className="w-10 h-10 md:w-14 md:h-14 mx-auto object-contain"
 						/>
-					</div>
+					</motion.div>
 				))}
 			</div>
-			<div
+			<motion.div
 				id="connect"
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true }}
+				transition={{ duration: 0.5, delay: 0.8 }}
 				className="w-full mt-8 md:mt-20 flex flex-col items-center gap-4">
 				<h3 className="text-lg md:text-xl font-bold">Connect with me</h3>
 				<div className="flex justify-center flex-wrap gap-3 md:gap-4">
@@ -45,7 +59,7 @@ export default function Skills() {
 					<MediumIcon />
 					<EmailIcon />
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 }

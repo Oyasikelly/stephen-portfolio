@@ -26,7 +26,7 @@ const Button = ({
 	);
 
 	return url ? (
-		<Link href="/restricted">
+		<Link href="tel:+2348130000000">
 			<button
 				className={buttonClass}
 				onClick={onClick}>

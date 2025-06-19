@@ -32,15 +32,16 @@ const portfolioComponentMap: Record<string, React.FC<any>> = {
 	datkey: Datkey,
 };
 
-export default function PortfolioPage({
+export default async function PortfolioPage({
 	params,
 }: {
-	params: { slug: string };
+	params: Promise<{ slug: string }>;
 }) {
-	const content = (portfolioData as Record<string, ContentItem>)[params.slug];
+	const { slug } = await params;
+	const content = (portfolioData as Record<string, ContentItem>)[slug];
 	if (!content || content.type !== "portfolio") return notFound();
 
-	const PortfolioComponent = portfolioComponentMap[params.slug];
+	const PortfolioComponent = portfolioComponentMap[slug];
 	if (!PortfolioComponent) return notFound();
 
 	return (

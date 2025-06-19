@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaArrowRight, FaClock } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 interface FeaturedProjectsProps {
 	children: React.ReactNode;
@@ -7,7 +8,7 @@ interface FeaturedProjectsProps {
 	image?: string;
 	link?: string;
 	time?: number;
-	index: string;
+	index: number;
 }
 
 export function FeaturedProjects({
@@ -18,7 +19,7 @@ export function FeaturedProjects({
 }: FeaturedProjectsProps) {
 	const time = 1;
 	return (
-		<div className="mt-8 md:mt-15 border-1 border-[#252e43] rounded-lg shadow-lg shadow-black/20 overflow-hidden">
+		<motion.div className="bg-[#080d18] ">
 			<h3 className="py-3 md:py-4 px-4 md:px-6 lg:px-20 bg-[#252e43] text-lg md:text-xl">
 				{title}
 			</h3>
@@ -54,6 +55,6 @@ export function FeaturedProjects({
 					/>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
