@@ -173,7 +173,7 @@ export default function Header() {
 								animate={{ opacity: 1 }}
 								transition={{ delay: 0.8 }}
 								className="p-6 text-center text-white/40 text-sm border-t border-[#252e43]/30">
-								© 2024 Stephen Okuanade
+								© {new Date().getFullYear()} Stephen Okuanade
 							</motion.div>
 						</motion.div>
 					</motion.div>
