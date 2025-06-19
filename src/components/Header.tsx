@@ -158,7 +158,7 @@ export default function Header() {
 									whileHover={{ scale: 1.02 }}
 									whileTap={{ scale: 0.98 }}
 									className="w-full">
-									<Link href="/mailto:yourname@example.com">
+									<Link href="mailto:yourname@example.com">
 										<button className="w-full border-2 border-[#9bbce5] text-white font-bold py-4 px-6 rounded-xl hover:bg-[#9bbce5] hover:text-[#080d18] transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
 											Message me
 											<FaArrowRight className="transition-transform group-hover:translate-x-1" />

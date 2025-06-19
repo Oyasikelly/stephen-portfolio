@@ -166,7 +166,7 @@ const HeroSection = () => {
 							viewport={{ once: true }}
 							transition={{ duration: 0.5, delay: 0.8 }}
 							className="flex flex-wrap gap-4 mt-6">
-							<Link href="mailto:yourname@example.com">
+							<Link href="/contact">
 								<motion.button
 									whileHover={{ scale: 1.05 }}
 									whileTap={{ scale: 0.95 }}
@@ -174,7 +174,7 @@ const HeroSection = () => {
 									Book call
 								</motion.button>
 							</Link>
-							<Link href="tel:+2348130000000">
+							<Link href="/restricted">
 								<motion.button
 									whileHover={{ scale: 1.05 }}
 									whileTap={{ scale: 0.95 }}

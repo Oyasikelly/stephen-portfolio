@@ -46,19 +46,15 @@ const RestrictedAccess = () => {
 		}
 	};
 
-	const handleGoBack = () => {
-		router.back();
-	};
-
 	return (
 		<div className="flex flex-col mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 py-8 md:py-12 lg:py-16 xl:py-20">
-			<button
-				onClick={handleGoBack}
+			<Link
+				href="/"
 				className="text-white/60 w-fit hover:underline mb-6 md:mb-8 inline-block">
 				<div className="flex justify-center items-center gap-2 text-sm md:text-base">
 					<FaArrowLeft /> <p>Go back</p>
 				</div>
-			</button>
+			</Link>
 
 			<div className="bg-[#111724] text-white px-4 sm:px-6 pb-6 sm:pb-8 md:pb-10 rounded-sm w-full max-w-xl mx-auto text-center">
 				<div className="h-[2px] bg-gradient-to-r from-[#080d18] via-[#ffffffb4] to-[#080d18]"></div>
