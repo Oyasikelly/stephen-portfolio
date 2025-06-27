@@ -1,0 +1,96 @@
+{
+	"the-expectations": {
+		"slug": "the-expectations",
+		"type": "articles",
+		"title": "The Expectations of a Senior Frontend Engineer - Skills and Responsibilities",
+		"img": "/assets/articles/the-expectations.png",
+		"time": 5,
+		"date": "27 June 2025",
+		"sections": [
+			{ "id": "introduction", "title": "Introduction" },
+			{ "id": "Technical_Skills", "title": "Technical Skills and Expertise" },
+			{ "id": "responsibilities", "title": "Responsibilities" }
+		],
+		"content": [
+			"Checkout.com, is an international financial technology company which processes payments for other companies. Founded as Opus Payments in 2009, it is headquartered in London, United Kingdom. It had a valuation of $40 billion USD in 2022, making it the most valuable European fintech startup.",
+			"Technical engineers must possess deep knowledge of frontend tooling, performance optimization, state management, and CI/CD workflows. Familiarity with system design and cross-functional collaboration is crucial.",
+			"Senior engineers are expected to lead projects, mentor junior developers, and ensure architectural soundness across the frontend stack."
+		]
+	},
+
+	"mastering-css-grid": {
+		"slug": "mastering-css-grid",
+		"type": "articles",
+		"title": "Mastering CSS Grid Layout: A Complete Guide",
+		"img": "/assets/articles/mastering-css-grid.png",
+		"time": 2,
+		"date": "27 June 2025",
+		"sections": [
+			{ "id": "overview", "title": "Overview" },
+			{ "id": "concepts", "title": "Core Concepts" },
+			{ "id": "examples", "title": "Real-World Examples" }
+		],
+		"content": [
+			"CSS Grid is a powerful layout system available in CSS. It's a 2-dimensional system, meaning it can handle both columns and rows.",
+			"Key concepts include grid containers, grid items, tracks, and placement properties like `grid-template-columns` and `grid-area`.",
+			"For instance, building a dashboard or magazine-style layout is much simpler with Grid than with Flexbox. It allows precise control over alignment and spacing."
+		]
+	},
+
+	"getting-started-nodejs": {
+		"slug": "getting-started-nodejs",
+		"type": "articles",
+		"title": "Getting Started with Node.js for Backend Development",
+		"img": "/assets/articles/getting-started-nodejs.png",
+		"time": 3,
+		"date": "23 June 2025",
+		"sections": [
+			{ "id": "why-node", "title": "Why Choose Node.js?" },
+			{ "id": "setup", "title": "Setting Up Your Environment" },
+			{ "id": "first-api", "title": "Building Your First API" }
+		],
+		"content": [
+			"Node.js is an asynchronous, event-driven JavaScript runtime designed to build scalable network applications. It's lightweight and efficient.",
+			"Start by installing Node.js and using npm or yarn for package management. A typical project begins with `npm init`.",
+			"You can create a simple API using Express.js. Define endpoints, handle requests, and return responses all within minutes."
+		]
+	},
+
+	"seo-in-modern-web": {
+		"slug": "seo-in-modern-web",
+		"type": "articles",
+		"title": "SEO in Modern Web Development",
+		"img": "/assets/articles/seo-in-modern-web.png",
+		"time": 5,
+		"date": "23 June 2025",
+		"sections": [
+			{ "id": "importance", "title": "Importance of SEO" },
+			{ "id": "onpage", "title": "On-Page SEO Strategies" },
+			{ "id": "technical", "title": "Technical SEO Tips" }
+		],
+		"content": [
+			"Search Engine Optimization (SEO) ensures your site is discoverable by search engines and ranks high in relevant searches.",
+			"Use semantic HTML, meaningful meta tags, keyword-rich headings, and fast-loading content to boost SEO.",
+			"Ensure your site has clean URLs, proper canonical tags, robots.txt, sitemaps, and mobile responsiveness for good SEO health."
+		]
+	},
+
+	"deploy-nextjs-vercel": {
+		"slug": "deploy-nextjs-vercel",
+		"type": "articles",
+		"title": "How to Deploy a Next.js App on Vercel",
+		"img": "/assets/articles/deploy-nextjs-vercel.png",
+		"time": 5,
+		"date": "23 June 2025",
+		"sections": [
+			{ "id": "prep", "title": "Preparing Your App" },
+			{ "id": "vercel-setup", "title": "Setting Up Vercel" },
+			{ "id": "live-deploy", "title": "Deploy and Monitor" }
+		],
+		"content": [
+			"Make sure your Next.js project is production-ready, optimized with `next build` and has all environment variables set.",
+			"Create a free Vercel account and link your GitHub repo. Vercel automatically detects Next.js and configures build steps.",
+			"Once deployed, you can manage previews, rollbacks, and monitor performance analytics directly from the Vercel dashboard."
+		]
+	}
+}
