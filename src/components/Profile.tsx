@@ -35,7 +35,7 @@ export default function Profile() {
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.4, delay: 0.3 }}
-							className="flex justify-center items-center gap-2 w-fit py-1 px-2 md:py-2 md:px-2 bg-[#252e43] text-[#9bbce5] rounded-lg">
+							className="flex justify-center items-center gap-2 w-fit py-1 px-2 md:py-2 md:px-2 bg-base text-light rounded-lg">
 							<FaStar /> Senior Software Engineer
 						</motion.p>
 						<motion.p
@@ -43,7 +43,7 @@ export default function Profile() {
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.4, delay: 0.4 }}
-							className="flex justify-center items-center gap-2 w-fit py-1 px-2 md:py-2 md:px-2 bg-[#252e43] text-[#9bbce5] rounded-lg">
+							className="flex justify-center items-center gap-2 w-fit py-1 px-2 md:py-2 md:px-2 bg-base text-light rounded-lg">
 							<FaLocationPin /> London, UK
 						</motion.p>
 						<motion.p
@@ -51,7 +51,7 @@ export default function Profile() {
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.4, delay: 0.5 }}
-							className="flex justify-center items-center gap-2 w-fit py-1 px-2 md:py-2 md:px-2 bg-[#252e43] text-[#9bbce5] rounded-lg">
+							className="flex justify-center items-center gap-2 w-fit py-1 px-2 md:py-2 md:px-2 bg-base text-light rounded-lg">
 							<FaNoteSticky /> Monite, Ex. checkout.com
 						</motion.p>
 					</div>
@@ -63,7 +63,7 @@ export default function Profile() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.6 }}
-						className="w-[50%] bg-[#252e43] p-2 lg:p-4 rounded-lg text-center ">
+						className="w-[50%] bg-base p-2 lg:p-4 rounded-lg text-center ">
 						<h3 className="text-2xl lg:text-4xl font-bold">8+</h3>
 						<p>Years of experience</p>
 					</motion.div>
@@ -72,7 +72,7 @@ export default function Profile() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.7 }}
-						className="w-[50%] bg-[#252e43] p-2 lg:p-4 rounded-lg text-center">
+						className="w-[50%] bg-base p-2 lg:p-4 rounded-lg text-center">
 						<h3 className="text-2xl lg:text-4xl font-bold">5+</h3>
 						<p>Countries mentored</p>
 					</motion.div>

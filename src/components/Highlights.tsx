@@ -1,6 +1,7 @@
 // components/Highights.tsx
 import { ReactNode, useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { Text } from "./Text";
 
 const TypingParagraph = ({
 	text,
@@ -80,11 +81,17 @@ const Highlights = () => {
 	return (
 		<>
 			<section id="highlights">
-				<TypingParagraph
-					text="A Global Talent awardee based in London, United Kingdom that is a self-taught Frontend Heavy Fullstack Software Engineer that builds products with an end-to-end perspective, with background in Electrical & Electronics Engineering, experience in Product Design and backend development, his implementations are usually classified as pixel-perfect & eye-candy due to how he factors intuitive human-centered experiences with a well thought-out business logic."
-					delay={0}
-					speed={20}
-				/>
+				<Text
+					as="p"
+					className="mt-6">
+					A Global Talent awardee based in London, United Kingdom that is a
+					self-taught Frontend Heavy Fullstack Software Engineer that builds
+					products with an end-to-end perspective, with background in Electrical
+					& Electronics Engineering, experience in Product Design and backend
+					development, his implementations are usually classified as
+					pixel-perfect & eye-candy due to how he factors intuitive
+					human-centered experiences with a well thought-out business logic.
+				</Text>
 			</section>
 
 			<section
@@ -98,11 +105,10 @@ const Highlights = () => {
 					className="text-2xl md:text-3xl font-bold border-b-2 border-[#252e43] pb-2">
 					Communities
 				</motion.h2>
-				<TypingParagraph
-					text="I contribute to many communities in different forms, to mention a few, I am a contributor/mentor at"
-					delay={0.3}
-					speed={25}
-				/>
+				<Text as="p">
+					I contribute to many communities in different forms, to mention a few,
+					I am a contributor/mentor at"
+				</Text>
 				<motion.div
 					initial={{ opacity: 0, scale: 0.9 }}
 					whileInView={{ opacity: 1, scale: 1 }}
@@ -127,11 +133,31 @@ const Highlights = () => {
 					className="text-2xl md:text-3xl font-bold border-b-2 border-[#252e43] pb-2">
 					Journey
 				</motion.h2>
-				<TypingParagraph
-					text="He is currently building the future of embedded finance with Montie delivering SDKs and APIs that transforms businesses with fully fledged invoicing, AP/AR functionalities and automations.\n\nHe was previously at checkout.com facilitating secure payments across the world, fighting fraud, and maximizing approval rates, read more about his...\n\nCheckout.com is an international financial technology company which processes payments for other companies. Founded as Opus Payments in 2009, it is headquartered in London, United Kingdom. It had a valuation of $40 billion USD in 2022, making it the most valuable European fintech startup.\n\nPrior to checkout.com, he worked at Kloud Commerce (formerly PayPecker) as the Frontend Lead, where he collaboratively pioneered the development of a customer-facing and merchant-facing e-commerce/FinTech solution which facilitated synchronized sales data across multiple channels (e.g. Woo-Commerce and Point of Sales (P.O.S) outlets in multiple locations) with internal tools for administrative management e.g. handling Know Your Customer (K.Y.C) processes, read more about his...\n\nOver the years, he has consulted for and worked with different companies in diverse industries & sectors like Advertising & Marketing, Oil & gas, Education e.t.c in designing and building solutions from the ground up through the SDLC (Software Development Life Cycle) from conceptualisation/ideation phase to production stage with the comapny's OKPs (Objective Key Results) in view."
-					delay={0.6}
-					speed={15}
-				/>
+				<Text as="p">
+					He is currently building the future of embedded finance with Montie
+					delivering SDKs and APIs that transforms businesses with fully fledged
+					invoicing, AP/AR functionalities and automations.\n\nHe was previously
+					at checkout.com facilitating secure payments across the world,
+					fighting fraud, and maximizing approval rates, read more about
+					his...\n\nCheckout.com is an international financial technology
+					company which processes payments for other companies. Founded as Opus
+					Payments in 2009, it is headquartered in London, United Kingdom. It
+					had a valuation of $40 billion USD in 2022, making it the most
+					valuable European fintech startup.\n\nPrior to checkout.com, he worked
+					at Kloud Commerce (formerly PayPecker) as the Frontend Lead, where he
+					collaboratively pioneered the development of a customer-facing and
+					merchant-facing e-commerce/FinTech solution which facilitated
+					synchronized sales data across multiple channels (e.g. Woo-Commerce
+					and Point of Sales (P.O.S) outlets in multiple locations) with
+					internal tools for administrative management e.g. handling Know Your
+					Customer (K.Y.C) processes, read more about his...\n\nOver the years,
+					he has consulted for and worked with different companies in diverse
+					industries & sectors like Advertising & Marketing, Oil & gas,
+					Education e.t.c in designing and building solutions from the ground up
+					through the SDLC (Software Development Life Cycle) from
+					conceptualisation/ideation phase to production stage with the
+					comapny's OKPs (Objective Key Results) in view."
+				</Text>
 			</section>
 
 			<section
@@ -145,11 +171,14 @@ const Highlights = () => {
 					className="text-2xl md:text-3xl font-bold border-b-2 border-[#252e43] pb-2">
 					Hobbies
 				</motion.h2>
-				<TypingParagraph
-					text="He is a music lover and a creative that enjoys travelling, exploring and appreciates art. Whenever he is not writing code, designing, building or learning something, he is probably playing video games (usually Call of Duty Mobile (COD) and car racing games e.g. F1), or swimming, cycling, playing a game of snooker, catching up with family, friends and acquaintances or maybe just eating and sleeping."
-					delay={0.8}
-					speed={20}
-				/>
+				<Text as="p">
+					He is a music lover and a creative that enjoys travelling, exploring
+					and appreciates art. Whenever he is not writing code, designing,
+					building or learning something, he is probably playing video games
+					(usually Call of Duty Mobile (COD) and car racing games e.g. F1), or
+					swimming, cycling, playing a game of snooker, catching up with family,
+					friends and acquaintances or maybe just eating and sleeping."
+				</Text>
 			</section>
 		</>
 	);

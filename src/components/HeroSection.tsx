@@ -7,6 +7,8 @@ import Button from "@/components/Button";
 import SocialIconLinks from "@/components/SocialIconLinks";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
+import { Text } from "./Text";
+import { colors } from "@/libs/styles/colors";
 
 const HeroSection = () => {
 	return (
@@ -14,38 +16,23 @@ const HeroSection = () => {
 			<div className="py-10 md:py-20">
 				<div className="w-auto mx-auto flex flex-col md:flex-row items-center">
 					<div className="w-full md:max-w-[50%] md:w-1/2 mb-10 md:mb-0 px-4 md:px-0">
-						<motion.span
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.2, delay: 0.1 }}
-							className="text-[#ffffffb4] text-lg sm:text-xl">
-							Hey there 👋 I'm Stephen Okuanade
-						</motion.span>
-						<motion.h1
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.2, delay: 0.2 }}
-							className="text-5xl lg:text-8xl mt-6 md:mt-4 font-bold mb-4 md:mb-6">
+						<Text as="p">Hey there 👋 I'm Stephen Okuanade</Text>
+						<Text
+							as="h1"
+							className="mt-6 md:mt-4 mb-4 md:mb-6 text-light ">
 							FullStack Developer
-						</motion.h1>
-						<motion.p
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.2, delay: 0.1 }}
-							className="text-[#ffffffb4] text-base sm:text-lg mt-4">
+						</Text>
+						<Text as="p">
 							A Frontend heavy Fullstack Software Engineer that transforms
 							problems into scalable solutions with design & technology for
 							intuitive human-centered experiences, read more about me
-						</motion.p>
+						</Text>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.5, delay: 0.8 }}
-							className="flex flex-row justify-center md:justify-start gap-4 mt-6">
+							className="flex flex-row items-center md:items-start gap-4 mt-6">
 							<Button
 								variant="default"
 								showArrow
@@ -69,8 +56,11 @@ const HeroSection = () => {
 								whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
-								style={{ borderBottomLeftRadius: "50%" }}
-								className="border-2 rounded-xl w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
+								style={{
+									borderBottomLeftRadius: "50%",
+									borderColor: colors.dimbase,
+								}}
+								className="border-2  rounded-xl w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
 								<div className="p-4 sm:p-6 h-full">
 									<motion.img
 										initial={{ opacity: 0, scale: 0.9 }}

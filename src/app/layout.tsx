@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+
+import { colors } from "@/libs/styles/colors";
 import Footer from "../components/Footer";
 import FloatingCursor from "../components/FloatingCursor";
 
@@ -23,7 +25,9 @@ export default function RootLayout({
 
 	return (
 		<html lang="en">
-			<body className={`${inter.className}`}>
+			<body
+				style={{ backgroundColor: colors.secondary }}
+				className={`${inter.className} `}>
 				<FloatingCursor />
 				<ConditionalHeader />
 				<PageTransitionProvider>

@@ -33,11 +33,11 @@ const Button = ({
 	if (variant === "outline") {
 		variantStyles = `
 			border border-[#C6E1F5]/50 text-white 
-			hover:bg-[#C6E1F5] hover:text-[#0E0F11]
+			hover:bg-[#546d7f] hover:text-[#0E0F11]
 		`;
 	} else if (variant === "ghost") {
 		variantStyles = `
-			border border-[#ffffffcb] text-white rounded-xl
+			border border-[#ffffffb4] text-white rounded-xl
 			hover:bg-[#ffffff10] hover:border-white hover:text-white
 		`;
 	} else {

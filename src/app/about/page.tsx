@@ -8,6 +8,8 @@ import customAboutLinks from "@/data/customAboutLinks";
 import AnimatedSection from "@/components/AnimatedSection";
 import AnimatedCard from "@/components/AnimatedCard";
 import SoftPageFade from "@/components/SoftPageFade";
+import HorizontalLine from "@/components/HorizontalLine";
+import { Text } from "@/components/Text";
 
 export default function About() {
 	return (
@@ -20,11 +22,16 @@ export default function About() {
 					page=""
 				/>
 
-				<div className="mt-15 h-[2px] bg-gradient-to-r from-[#080d18] via-[#ffffffb4] to-[#080d18]"></div>
-				<div className="px-4 sm:px-10 md:px-20 lg:px-40 bg-[#111724]">
+				<HorizontalLine />
+
+				<div className="px-4 sm:px-10 md:px-20 lg:px-40 bg-tertiary">
 					<section className="pt-15 my-0 flex flex-col lg:flex-row justify-between items-start gap-4 lg:gap-10">
 						<div className="w-full lg:max-w-[80%] mb-6 pb-4">
-							<h2 className="text-3xl font-bold">About me</h2>
+							<Text
+								as="h2"
+								className="text-light">
+								About me
+							</Text>
 
 							<div className="bg-[#080d18] rounded-xl border-2 border-[#252e43] px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
 								<Profile />
@@ -43,7 +50,7 @@ export default function About() {
 											className="mb-2">
 											<a
 												href={link.href}
-												className="text-white/60 hover:underline">
+												className="text-dimlight hover:underline">
 												{link.title}
 											</a>
 											{link.children && (
@@ -52,7 +59,7 @@ export default function About() {
 														<li key={childIndex}>
 															<a
 																href={`#${child.id}`}
-																className="text-white/60 hover:underline">
+																className="text-dimlight hover:underline">
 																{child.name}
 															</a>
 														</li>

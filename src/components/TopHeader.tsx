@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { usePageTransition } from "@/context/PageTransitionContext";
+import { Text } from "./Text";
 
 interface topHeaderProps {
 	title: string;
@@ -46,7 +47,11 @@ const TopHeader = ({ title, page }: topHeaderProps) => {
 	return (
 		<div className="flex flex-col justify-center items-center px-4">
 			<div className="text-center flex justify-center">
-				<h1 className="text-2xl  md:text-3xl font-bold  ">{title}</h1>
+				<Text
+					as="h2"
+					className="text-light">
+					{title}
+				</Text>
 			</div>
 			<div className="my-3 md:my-4 text-white/60">{page ? page : ""}</div>
 			<motion.div

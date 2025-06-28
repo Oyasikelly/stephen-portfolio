@@ -6,11 +6,12 @@ import { navLinks } from "../data/NavLinks";
 import Header from "./Header";
 import { useState } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import HorizontalLine from "./HorizontalLine";
 import Button from "./Button";
+import { Text } from "./Text";
+import { colors } from "@/libs/styles/colors";
 
 export default function ConditionalHeader() {
 	const pathName = usePathname();
@@ -27,16 +28,16 @@ export default function ConditionalHeader() {
 								href={link.href}
 								className={`${
 									link.href === pathName
-										? "relative before:content-['.'] before:text-[#9bbce5] before:text-4xl before:absolute before:top-0 before:left-5 before:flex"
+										? "relative before:content-['.'] before:text-[#c6e1f5] before:text-4xl before:absolute before:top-0 before:left-5 before:flex"
 										: ""
-								} font-medium`}>
+								} text-dimlight font-medium`}>
 								{link.label}
 							</Link>
 						))}
 					</nav>
 
 					{/* Mobile Menu Toggle */}
-					<div className="md:hidden flex justify-end w-full px-6 text-white z-50">
+					<div className="md:hidden flex justify-end w-full px-6 text-light z-50">
 						<div onClick={() => setIsOpen(!isOpen)}>
 							{isOpen ? <FaTimes size={24} /> : <RiMenu3Fill size={24} />}
 						</div>
@@ -69,21 +70,19 @@ export default function ConditionalHeader() {
 								animate={{ x: 0 }}
 								exit={{ x: "100%" }}
 								transition={{ type: "spring", damping: 25, stiffness: 200 }}
-								className="absolute right-0 top-0 h-full w-80 bg-gradient-to-b from-[#080d18]/95 to-[#111724]/95 backdrop-blur-2xl border-l border-[#252e43]/50 shadow-2xl">
+								className="absolute right-0 top-0 h-full w-80 bg-gradient-to-b bg-secondary backdrop-blur-2xl border-l border-[#252e43]/50 shadow-2xl">
 								{/* Header */}
-								<div className="flex justify-between items-center p-6 border-b border-[#252e43]/30">
-									<motion.h2
-										initial={{ opacity: 0, y: -20 }}
-										animate={{ opacity: 1, y: 0 }}
-										transition={{ delay: 0.2 }}
-										className="text-xl font-bold text-white">
+								<div className="flex justify-between items-center p-6">
+									<Text
+										as="h2"
+										className="text-light">
 										Menu
-									</motion.h2>
+									</Text>
 									<motion.button
 										onClick={() => setIsOpen(false)}
 										whileHover={{ scale: 1.1, rotate: 90 }}
 										whileTap={{ scale: 0.9 }}
-										className="text-white/70 hover:text-white transition-colors">
+										className="text-dimlight">
 										<FaTimes size={20} />
 									</motion.button>
 								</div>
@@ -100,11 +99,17 @@ export default function ConditionalHeader() {
 											<Link
 												href={link.href}
 												onClick={() => setIsOpen(false)}
+												style={{
+													borderBlock: "1px",
+													borderColor: `${
+														link.href === pathName ? colors.primary : "none"
+													}`,
+												}}
 												className={`block w-full p-4 rounded-xl transition-all duration-300 ${
 													link.href === pathName
-														? "bg-[#9bbce5]/20 text-[#9bbce5] border border-[#9bbce5]/30 shadow-lg shadow-[#9bbce5]/10"
-														: "text-white/70 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10"
-												}`}>
+														? "bg-base text-dimlight border shadow-lg"
+														: "menu-hover"
+												} text-dimlight`}>
 												<div className="flex items-center justify-between">
 													<span className="font-medium">{link.label}</span>
 													{link.href === pathName && (

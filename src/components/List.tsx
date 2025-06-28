@@ -1,6 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
 import { FeaturedProjects } from "./FeaturedProjects";
 import portfolioPreviews from "@/data/portfolioPreviews";
+import { Text } from "./Text";
 
 export default function List() {
 	const overlap = 48; // Overlap distance between cards
@@ -30,9 +31,12 @@ export default function List() {
 		<section
 			className="relative w-full"
 			style={{ minHeight: `${containerHeight}px` }}>
-			<h2 className="sticky top-0 z-10 py-4 mb-4 text-center text-2xl font-bold">
+			<Text
+				as="h3"
+				className="sticky top-0 z-10 py-4 mb-4 text-center text-dimlight">
 				FEATURED PROJECTS
-			</h2>
+			</Text>
+
 			<div className="relative w-full h-full">
 				{portfolioPreviews.map((project, index) => (
 					<div

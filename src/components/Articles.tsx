@@ -2,7 +2,6 @@
 "use client";
 
 import articles from "@/data/articles";
-import articleData from "@/data/articles.json";
 import { FaClock } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";

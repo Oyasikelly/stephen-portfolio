@@ -41,8 +41,8 @@ export default function Footer() {
 
 						<span
 							onClick={scrollToTop}
-							className="cursor-pointer w-fit p-3 hover:text-white/30 hover:bg-[#111724] rounded-xl transition-all duration-300 ease-in-out">
-							<FaArrowUp className="arrow-animate arrow-animate-1" />
+							className="cursor-pointer w-fit p-3 hover:text-white/30 hover:bg-base rounded-xl transition-all duration-300 ease-in-out">
+							<FaArrowUp />
 						</span>
 					</div>
 				</div>

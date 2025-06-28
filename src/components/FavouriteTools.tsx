@@ -2,6 +2,7 @@ import { motion, Variants } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import HorizontalLine from "./HorizontalLine";
+import { Text } from "./Text";
 
 export default function FavouriteTools() {
 	const ref = useRef(null);
@@ -27,13 +28,11 @@ export default function FavouriteTools() {
 			ref={ref}>
 			<HorizontalLine />
 			<div className="max-w-7xl mx-auto py-10 md:py-20 px-4 sm:px-6">
-				<motion.h2
-					initial={{ opacity: 0, y: 30 }}
-					animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-					transition={{ duration: 0.6, ease: "easeOut" }}
-					className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10">
+				<Text
+					as="h3"
+					className="text-center text-dimlight mb-6 md:mb-10">
 					FAVOURITE TOOLS
-				</motion.h2>
+				</Text>
 				<motion.div
 					variants={containerVariants}
 					initial="hidden"

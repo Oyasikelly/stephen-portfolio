@@ -12,6 +12,7 @@ import Testimonials from "@/components/Testimonials";
 import StoicQuote from "@/components/StoicQuote";
 import SoftPageFade from "@/components/SoftPageFade";
 import List from "@/components/List";
+import { Text } from "@/components/Text";
 
 export default function Home() {
 	const scrollRef = useRef<HTMLDivElement>(null);
@@ -71,7 +72,7 @@ export default function Home() {
 
 	return (
 		<SoftPageFade>
-			<div className="">
+			<div className="bg-secondary">
 				<HeroSection />
 
 				<section className="py-0">
@@ -99,7 +100,11 @@ export default function Home() {
 
 				<section className="py-6 md:py-10 px-4 sm:px-6 md:px-20 lg:px-40 ">
 					<motion.div className="shadow-lg shadow-black/10 md:py-10 ">
-						<h2 className="text-2xl font-bold mb-4">ARTICLES</h2>
+						<Text
+							as="h2"
+							className="text-light mb-4">
+							Articles
+						</Text>
 						<div className="mb-10">
 							<AnimatedCard>
 								<ArticleCard

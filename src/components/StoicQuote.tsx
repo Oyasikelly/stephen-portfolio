@@ -48,7 +48,7 @@ const StoicQuote = () => {
 	}, []);
 
 	return (
-		<div className="w-full flex flex-col items-center justify-center py-24 bg-[#111724]">
+		<div className="w-full flex flex-col items-center justify-center py-24 dimbase">
 			<div
 				className="relative flex items-center justify-center mb-10"
 				style={{ width: 200, height: 200 }}>
@@ -59,15 +59,15 @@ const StoicQuote = () => {
 					style={{ position: "absolute", left: 0, top: 0 }}>
 					{getCircularText(CIRCULAR_TEXT, RADIUS, CENTER)}
 				</svg>
-				<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-semibold text-[#bdbdbd] transition-all duration-300 cursor-pointer hover:text-white hover:drop-shadow-[0_0_10px_rgba(155,188,229,0.7)] hover:-translate-y-2 select-none">
+				<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-semibold text-dimlight transition-all duration-300 cursor-pointer hover:text-white hover:drop-shadow-[0_0_10px_rgba(155,188,229,0.7)] hover:-translate-y-2 select-none">
 					STOICISM
 				</span>
 			</div>
-			<blockquote className="text-center max-w-[60%] lg:max-w-3xl mx-auto  text-[#bdbdbd] text-2xl md:text-4xl font-serif mb-6">
+			<blockquote className="text-center max-w-[60%] lg:max-w-3xl mx-auto  text-dimlight text-2xl md:text-4xl font-serif mb-6">
 				"As if or as it is, I decide", read it as many times as it creates
 				meaning for you.
 			</blockquote>
-			<figcaption className="text-center text-[#9BBCE5] text-lg md:text-xl tracking-wide">
+			<figcaption className="text-center text-primary font-semibold text-lg md:text-xl tracking-wide">
 				- STEPHEN OKUANADE
 			</figcaption>
 		</div>

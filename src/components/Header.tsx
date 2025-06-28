@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "../data/NavLinks";
 import { useState } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePageTransition } from "@/context/PageTransitionContext";
+import { colors } from "@/libs/styles/colors";
 
 export default function Header() {
 	const pathName = usePathname();
@@ -30,9 +30,9 @@ export default function Header() {
 							href={link.href}
 							className={`${
 								link.href == pathName
-									? "relative before:content-['.'] before:text-[#9bbce5] before:text-4xl before:absolute before:top-5 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:flex before:justify-center before:items-center"
+									? "text-dimlight relative before:content-['.'] before:text-[#c6e1f5] before:text-4xl before:absolute before:top-5 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:flex before:justify-center before:items-center"
 									: ""
-							} font-medium`}>
+							} font-medium text-dimlight`}>
 							{link.label}
 						</Link>
 					))}
@@ -119,7 +119,6 @@ export default function Header() {
 									<FaTimes size={20} />
 								</motion.button>
 							</div>
-
 							{/* Navigation Links */}
 							<nav className="flex flex-col p-6 space-y-2">
 								{navLinks.map((link, index) => (
@@ -132,11 +131,17 @@ export default function Header() {
 										<Link
 											href={link.href}
 											onClick={() => setIsOpen(false)}
+											style={{
+												borderBlock: "1px",
+												borderColor: `${
+													link.href === pathName ? colors.primary : "none"
+												}`,
+											}}
 											className={`block w-full p-4 rounded-xl transition-all duration-300 ${
 												link.href === pathName
-													? "bg-[#9bbce5]/20 text-[#9bbce5] border border-[#9bbce5]/30 shadow-lg shadow-[#9bbce5]/10"
-													: "text-white/70 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10"
-											}`}>
+													? "bg-base text-dimlight border shadow-lg"
+													: "menu-hover"
+											} text-dimlight`}>
 											<div className="flex items-center justify-between">
 												<span className="font-medium">{link.label}</span>
 												{link.href === pathName && (
@@ -162,25 +167,19 @@ export default function Header() {
 								<motion.div
 									whileHover={{ scale: 1.02 }}
 									whileTap={{ scale: 0.98 }}
-									className="w-full ">
+									className="w-full flex flex-col gap-4">
 									<Button
 										variant="default"
 										url="tel:+2348130000000"
-										showArrow
-										className="w-full">
-										Book call
+										className="w-full"
+										showArrow>
+										Book me
 									</Button>
-								</motion.div>
-
-								<motion.div
-									whileHover={{ scale: 1.02 }}
-									whileTap={{ scale: 0.98 }}
-									className="w-full">
 									<Button
 										variant="outline"
 										url="mailto:yourname@example.com"
-										showArrow
-										className="w-full">
+										className="w-full"
+										showArrow>
 										Message me
 									</Button>
 								</motion.div>
