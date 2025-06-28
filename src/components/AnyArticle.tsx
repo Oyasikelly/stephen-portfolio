@@ -43,8 +43,7 @@ export default function AnyArticle({ content, sections }: ArticleProps) {
 			))}
 
 			{/* Optional Section for Next Projects */}
-			<section
-				className="mt-8 md:mt-10 max-w-4xl mx-auto">
+			<section className="mt-8 md:mt-10 max-w-4xl mx-auto">
 				<PopInOnScroll
 					as="h2"
 					className="text-md md:text-xl font-bold border-b-2 border-[#252e43] pb-2">
