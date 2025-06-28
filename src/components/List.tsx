@@ -47,7 +47,7 @@ export default function List() {
 							top:
 								index === n - 1
 									? `${base + (n - 2) * overlap}px`
-									: `${base + index * overlap}px`,
+									: `${base + 300 * overlap}px`,
 							zIndex: index + 1,
 							marginBottom: "0px",
 						}}

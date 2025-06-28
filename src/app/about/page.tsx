@@ -6,7 +6,6 @@ import Skills from "@/components/Skills";
 import TopHeader from "@/components/TopHeader";
 import customAboutLinks from "@/data/customAboutLinks";
 import AnimatedSection from "@/components/AnimatedSection";
-import AnimatedCard from "@/components/AnimatedCard";
 import SoftPageFade from "@/components/SoftPageFade";
 import HorizontalLine from "@/components/HorizontalLine";
 import { Text } from "@/components/Text";
