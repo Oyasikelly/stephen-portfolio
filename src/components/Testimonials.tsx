@@ -75,8 +75,8 @@ export default function Testimonials() {
 		<section className="w-full">
 			<div className="px-4 sm:px-6 md:px-20 lg:px-40 py-10 flex flex-col justify-center ">
 				<Text
-					as="h3"
-					className="text-dimlight mb-6 md:mb-10">
+					as="h2"
+					className="text-dimlight mb-6 md:mb-10 font-serif">
 					What people say about me
 				</Text>
 
@@ -103,11 +103,17 @@ export default function Testimonials() {
 							</div>
 							<div className="mt-4">
 								<span>
-									<Text as="p">{testimonial.name}</Text>
+									<Text
+										as="p"
+										className="font-serif">
+										{testimonial.name}
+									</Text>
 								</span>
 								<span></span>
 								<p className="text-white font-semibold text-sm md:text-base"></p>
-								<p className="text-primary">{testimonial.position}</p>
+								<p className="text-primary font-serif">
+									{testimonial.position}
+								</p>
 							</div>
 						</div>
 					))}

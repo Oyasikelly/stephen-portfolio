@@ -18,51 +18,51 @@ const TypingParagraph = ({
 	const [isTypingComplete, setIsTypingComplete] = useState(false);
 	const sectionRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (sectionRef.current) {
-				const rect = sectionRef.current.getBoundingClientRect();
-				const windowHeight = window.innerHeight;
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		if (sectionRef.current) {
+	// 			const rect = sectionRef.current.getBoundingClientRect();
+	// 			const windowHeight = window.innerHeight;
 
-				// Start typing when section is 50% visible
-				if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
-					setIsVisible(true);
-				}
+	// 			// Start typing when section is 50% visible
+	// 			if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
+	// 				setIsVisible(true);
+	// 			}
 
-				// Complete typing when user reaches the end of the section
-				if (rect.bottom < windowHeight * 0.8) {
-					setIsTypingComplete(true);
-				}
-			}
-		};
+	// 			// Complete typing when user reaches the end of the section
+	// 			if (rect.bottom < windowHeight * 0.8) {
+	// 				setIsTypingComplete(true);
+	// 			}
+	// 		}
+	// 	};
 
-		window.addEventListener("scroll", handleScroll);
-		handleScroll(); // Check initial position
+	// 	window.addEventListener("scroll", handleScroll);
+	// 	handleScroll(); // Check initial position
 
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+	// 	return () => window.removeEventListener("scroll", handleScroll);
+	// }, []);
 
-	useEffect(() => {
-		if (isVisible && !isTypingComplete && currentIndex < text.length) {
-			const timeout = setTimeout(() => {
-				setDisplayText((prev) => prev + text[currentIndex]);
-				setCurrentIndex((prev) => prev + 1);
-			}, speed);
+	// useEffect(() => {
+	// 	if (isVisible && !isTypingComplete && currentIndex < text.length) {
+	// 		const timeout = setTimeout(() => {
+	// 			setDisplayText((prev) => prev + text[currentIndex]);
+	// 			setCurrentIndex((prev) => prev + 1);
+	// 		}, speed);
 
-			return () => clearTimeout(timeout);
-		} else if (isTypingComplete && currentIndex < text.length) {
-			// Complete the typing immediately when user reaches the end
-			setDisplayText(text);
-			setCurrentIndex(text.length);
-		}
-	}, [currentIndex, text, speed, isVisible, isTypingComplete]);
+	// 		return () => clearTimeout(timeout);
+	// 	} else if (isTypingComplete && currentIndex < text.length) {
+	// 		// Complete the typing immediately when user reaches the end
+	// 		setDisplayText(text);
+	// 		setCurrentIndex(text.length);
+	// 	}
+	// }, [currentIndex, text, speed, isVisible, isTypingComplete]);
 
-	useEffect(() => {
-		if (isVisible && !isTypingComplete) {
-			setCurrentIndex(0);
-			setDisplayText("");
-		}
-	}, [isVisible, isTypingComplete, text]);
+	// useEffect(() => {
+	// 	if (isVisible && !isTypingComplete) {
+	// 		setCurrentIndex(0);
+	// 		setDisplayText("");
+	// 	}
+	// }, [isVisible, isTypingComplete, text]);
 
 	return (
 		<motion.div

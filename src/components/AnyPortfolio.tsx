@@ -1,5 +1,5 @@
 import NextProjects from "@/components/NextProjects";
-import portfolioPreviews from "@/data/portfolioPreviews";
+import portfolioPreviews from "@/data/FeaturedProjects";
 import PopInOnScroll from "@/components/PopInOnScroll";
 
 interface Section {

@@ -30,7 +30,7 @@ export default function FavouriteTools() {
 			<div className="max-w-7xl mx-auto py-10 md:py-20 px-4 sm:px-6">
 				<Text
 					as="h3"
-					className="text-center text-dimlight mb-6 md:mb-10">
+					className="text-center text-dimlight mb-6 md:mb-10 font-serif">
 					FAVOURITE TOOLS
 				</Text>
 				<motion.div

@@ -54,13 +54,13 @@ export default function PageTransition({ children }: PageTransitionProps) {
 						initial={{ y: 0 }}
 						animate={{ y: 0 }}
 						exit={{ y: "-100%" }}
-						transition={{ duration: 0.8, ease: "easeOut" }}
+						transition={{ duration: 0.8, ease: "easeInOut" }}
 						className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-[#080d18] text-white flex flex-col items-center justify-center">
 						<motion.h2
 							initial={{ opacity: 1, y: 0 }}
 							animate={{ opacity: 0, y: 20 }}
 							transition={{ delay: 1.7, duration: 0.8, ease: "easeInOut" }}
-							className="text-2xl font-bold mb-4">
+							className="text-3xl font-bold mb-4 font-serif">
 							STEPHEN OKUANADE
 						</motion.h2>
 					</motion.div>

@@ -1,18 +1,16 @@
 import { FaStar } from "react-icons/fa";
 import { FaLocationPin, FaNoteSticky } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { Text } from "./Text";
 
 export default function Profile() {
 	return (
-		<div className="border-r-0 lg:border-r-2 border-[#252e43] lg:pr-6 py-6 md:py-10">
-			<motion.h3
-				initial={{ opacity: 0, y: 20 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true }}
-				transition={{ duration: 0.5 }}
-				className="text-xl md:text-2xl border-b-2 border-[#252e43] font-bold pb-4 md:pb-5">
+		<div className="lg:pr-6 py-6 md:py-10">
+			<Text
+				as="h3"
+				className="text-light border-b-1 border-[#252e43]">
 				Profile
-			</motion.h3>
+			</Text>
 			<div className="mt-4 md:mt-0">
 				<div className="w-full grid grid-cols-2 justify-between items-center gap-4 mt-4 mb-4 lg:mb-6 text-sm md:text-md">
 					<motion.div

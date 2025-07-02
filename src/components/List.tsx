@@ -1,67 +1,44 @@
-import React, { useRef, useLayoutEffect, useState } from "react";
-import { FeaturedProjects } from "./FeaturedProjects";
-import portfolioPreviews from "@/data/portfolioPreviews";
+import React, { useRef } from "react";
+import FeaturedProjects from "../components/FeaturedProjects";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Text } from "./Text";
+import featuredProjects from "@/data/FeaturedProjects";
+import Projects from "./Projects";
 
-export default function List() {
-	const overlap = 48; // Overlap distance between cards
-	const base = 50; // Base offset from the top
-	const n = portfolioPreviews.length;
-	const cardRef = useRef<HTMLDivElement>(null);
-	const [cardHeight, setCardHeight] = useState(400); // Default fallback
-	const [containerHeight, setContainerHeight] = useState(1200); // Default fallback
+export default function List({ visibleCount = 4 }) {
+	const sectionRef = useRef(null);
 
-	useLayoutEffect(() => {
-		function updateHeights() {
-			if (cardRef.current) {
-				const measuredCardHeight = cardRef.current.offsetHeight;
-				setCardHeight(measuredCardHeight);
-				const lastCardTopOffset = base + (n - 2) * overlap;
-				const newContainerHeight =
-					window.innerHeight + lastCardTopOffset + measuredCardHeight - base;
-				setContainerHeight(newContainerHeight);
-			}
-		}
-		updateHeights();
-		window.addEventListener("resize", updateHeights);
-		return () => window.removeEventListener("resize", updateHeights);
-	}, [n]);
+	// Track scroll progress of the section
+	const { scrollYProgress } = useScroll({
+		target: sectionRef,
+		offset: ["start start", "end start"], // 0 when top hits top, 1 when bottom hits top
+	});
+
+	// Fade in as it becomes sticky, fade out as it leaves
+	const opacity = useTransform(
+		scrollYProgress,
+		[0, 0.05, 0.95, 1],
+		[0, 1, 1, 0]
+	);
 
 	return (
 		<section
-			className="relative w-full"
-			style={{ minHeight: `${containerHeight}px` }}>
-			<Text
-				as="h3"
-				className="sticky top-0 z-10 py-4 mb-4 text-center text-dimlight">
-				FEATURED PROJECTS
-			</Text>
-
-			<div className="relative w-full h-full">
-				{portfolioPreviews.map((project, index) => (
-					<div
-						key={project.title}
-						ref={index === 0 ? cardRef : undefined}
-						style={{
-							position: "sticky",
-							top:
-								index === n - 1
-									? `${base + (n - 2) * overlap}px`
-									: `${base + 300 * overlap}px`,
-							zIndex: index + 1,
-							marginBottom: "0px",
-						}}
-						className="transition-shadow duration-300">
-						<FeaturedProjects
-							title={project.title}
-							image={project.image}
-							link={project.link}
-							index={index}>
-							{project.description}
-						</FeaturedProjects>
-					</div>
-				))}
-			</div>
+			ref={sectionRef}
+			className="relative w-full -top-32 ">
+			<motion.div
+				style={{
+					position: "sticky",
+					top: 0,
+					zIndex: 0,
+					opacity,
+				}}>
+				<Text
+					as="h3"
+					className="py-4 text-center text-dimlight font-serif">
+					PROJECTS
+				</Text>
+			</motion.div>
+			<Projects data={featuredProjects.slice(0, visibleCount)} />
 		</section>
 	);
 }

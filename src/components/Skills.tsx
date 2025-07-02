@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Icons from "@/data/Icons";
 import Link from "next/link";
 import React from "react";
-
+import { Text } from "@/components/Text";
 const skills = [
 	"/assets/Favourite_tools/reactjs.png",
 	"/assets/Favourite_tools/nodejs.png",
@@ -19,14 +19,11 @@ export default function Skills() {
 		<div
 			id="favourite_tools"
 			className="flex flex-col py-6 md:py-10">
-			<motion.h3
-				initial={{ opacity: 0, y: 20 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true }}
-				transition={{ duration: 0.5 }}
-				className="text-xl md:text-2xl border-b-2 border-[#252e43] border-t-2  lg:border-t-0 border-[#252e43] font-bold py-4 md:py-5">
+			<Text
+				as="h3"
+				className="text-light border-b-1 border-[#252e43]">
 				Skills
-			</motion.h3>
+			</Text>
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mt-4 gap-4">
 				{skills.map((skill, index) => (
 					<motion.div

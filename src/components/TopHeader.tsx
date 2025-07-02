@@ -45,7 +45,7 @@ const TopHeader = ({ title, page }: topHeaderProps) => {
 	}, [width, controls, transitionComplete]);
 
 	return (
-		<div className="flex flex-col justify-center items-center px-4">
+		<div className="flex flex-col justify-center items-center px-4 py-20 relative">
 			<div className="text-center flex justify-center">
 				<Text
 					as="h2"
@@ -55,7 +55,7 @@ const TopHeader = ({ title, page }: topHeaderProps) => {
 			</div>
 			<div className="my-3 md:my-4 text-white/60">{page ? page : ""}</div>
 			<motion.div
-				className="h-[4px] md:h-[5px] rounded-full bg-[#9bbce5]"
+				className="h-1 w-auto md:w-24 rounded-full bg-[#9bbce5]"
 				initial={{ width: 0, opacity: 0 }}
 				animate={controls}
 				style={{ width }}

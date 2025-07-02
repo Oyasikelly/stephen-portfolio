@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
-import { FaArrowRight } from "react-icons/fa6";
+import React, { useState } from "react";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 interface ButtonProps {
 	children: React.ReactNode;
@@ -13,6 +13,9 @@ interface ButtonProps {
 	className?: string;
 }
 
+const primary = "var(--primary)";
+const dark = "#181818";
+
 const Button = ({
 	url,
 	children,
@@ -21,48 +24,59 @@ const Button = ({
 	showArrow = false,
 	className = "",
 }: ButtonProps) => {
+	const [hovered, setHovered] = useState(false);
+
 	const baseStyles = `
 		group inline-flex items-center justify-center gap-2
-		font-semibold text-sm sm:text-base md:text-lg
-		px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-4
-		rounded-full transition-all duration-300 ease-in-out
+		font-semibold text-sm lg:text-base md:text-lg
+		px-2 py-2 md:px-4 md:py-1.5
+		rounded-md transition-all duration-200
 	`;
 
-	let variantStyles = "";
+	let style: React.CSSProperties = {};
 
 	if (variant === "outline") {
-		variantStyles = `
-			border border-[#C6E1F5]/50 text-white 
-			hover:bg-[#546d7f] hover:text-[#0E0F11]
-		`;
+		style = {
+			border: `1px solid ${primary}`,
+			color: hovered ? dark : primary,
+			background: hovered ? primary : "transparent",
+		};
 	} else if (variant === "ghost") {
-		variantStyles = `
-			border border-[#ffffffb4] text-white rounded-xl
-			hover:bg-[#ffffff10] hover:border-white hover:text-white
-		`;
+		style = {
+			border: `1px solid ${primary}`,
+			color: primary,
+			background: hovered ? "var(--card)" : "var(--secondary)", // fallback tan with opacity
+		};
 	} else {
 		// default
-		variantStyles = `
-			bg-[#C6E1F5] text-[#0E0F11] 
-			hover:bg-[#C6E1F580]
-		`;
+		style = {
+			background: primary,
+			color: dark,
+			border: `1px solid ${primary}`,
+			opacity: hovered ? 0.9 : 1,
+		};
 	}
 
 	const arrowIcon = showArrow ? (
-		<FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-rotate-12" />
+		<FaArrowUpRightFromSquare className="ml-1 text-inherit text-base" />
 	) : null;
 
-	const combinedClass = `${baseStyles} ${variantStyles} ${className}`.trim();
+	const combinedClass = `${baseStyles} ${className}`.trim();
+
+	const handleMouseEnter = () => setHovered(true);
+	const handleMouseLeave = () => setHovered(false);
 
 	if (url) {
 		return (
-			<Link href={url}>
-				<button
-					className={combinedClass}
-					onClick={onClick}>
-					{children}
-					{arrowIcon}
-				</button>
+			<Link
+				href={url}
+				className={combinedClass}
+				style={style}
+				onClick={onClick}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}>
+				{children}
+				{arrowIcon}
 			</Link>
 		);
 	}
@@ -70,7 +84,10 @@ const Button = ({
 	return (
 		<button
 			className={combinedClass}
-			onClick={onClick}>
+			style={style}
+			onClick={onClick}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}>
 			{children}
 			{arrowIcon}
 		</button>

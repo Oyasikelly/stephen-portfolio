@@ -158,7 +158,7 @@ export default function ConditionalHeader() {
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									transition={{ delay: 0.8 }}
-									className="p-6 text-center text-white/40 text-sm border-t border-[#252e43]/30">
+									className="p-6 text-center text-dimlight text-sm border-t border-[#252e43]/30">
 									© {new Date().getFullYear()} Stephen Okuanade
 								</motion.div>
 							</motion.div>

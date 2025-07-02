@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 // Components
 import Button from "@/components/Button";
 import SocialIconLinks from "@/components/SocialIconLinks";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa6";
 import { Text } from "./Text";
 import { colors } from "@/libs/styles/colors";
 
@@ -75,7 +73,6 @@ const HeroSection = () => {
 								</div>
 							</motion.div>
 						</div>
-
 						<SocialIconLinks />
 					</div>
 				</div>

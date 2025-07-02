@@ -6,6 +6,7 @@
 		"img": "/assets/articles/the-expectations.png",
 		"time": 5,
 		"date": "27 June 2025",
+		"status": "growth",
 		"sections": [
 			{ "id": "introduction", "title": "Introduction" },
 			{ "id": "Technical_Skills", "title": "Technical Skills and Expertise" },
@@ -25,6 +26,7 @@
 		"img": "/assets/articles/mastering-css-grid.png",
 		"time": 2,
 		"date": "27 June 2025",
+		"status": "dev",
 		"sections": [
 			{ "id": "overview", "title": "Overview" },
 			{ "id": "concepts", "title": "Core Concepts" },
@@ -44,6 +46,7 @@
 		"img": "/assets/articles/getting-started-nodejs.png",
 		"time": 3,
 		"date": "23 June 2025",
+		"status": "dev",
 		"sections": [
 			{ "id": "why-node", "title": "Why Choose Node.js?" },
 			{ "id": "setup", "title": "Setting Up Your Environment" },
@@ -63,6 +66,8 @@
 		"img": "/assets/articles/seo-in-modern-web.png",
 		"time": 5,
 		"date": "23 June 2025",
+		"status": "dev",
+
 		"sections": [
 			{ "id": "importance", "title": "Importance of SEO" },
 			{ "id": "onpage", "title": "On-Page SEO Strategies" },
@@ -82,6 +87,7 @@
 		"img": "/assets/articles/deploy-nextjs-vercel.png",
 		"time": 5,
 		"date": "23 June 2025",
+		"status": "dev",
 		"sections": [
 			{ "id": "prep", "title": "Preparing Your App" },
 			{ "id": "vercel-setup", "title": "Setting Up Vercel" },

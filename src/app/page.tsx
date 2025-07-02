@@ -1,6 +1,14 @@
 "use client";
 
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, {
+	useRef,
+	useState,
+	useCallback,
+	forwardRef,
+	useImperativeHandle,
+	useEffect,
+} from "react";
+
 import ArticleCard from "@/components/ArticleCard";
 import Button from "@/components/Button";
 import FavouriteTools from "@/components/FavouriteTools";
@@ -13,6 +21,11 @@ import StoicQuote from "@/components/StoicQuote";
 import SoftPageFade from "@/components/SoftPageFade";
 import List from "@/components/List";
 import { Text } from "@/components/Text";
+import featuredProjects from "../data/FeaturedProjects";
+
+import pageStyle from "./page.module.scss";
+import FeaturedProjectCards from "@/components/FeaturedProjectCard";
+import FeaturedProjects from "@/components/FeaturedProjects";
 
 export default function Home() {
 	const scrollRef = useRef<HTMLDivElement>(null);
@@ -60,6 +73,7 @@ export default function Home() {
 		});
 	};
 
+	//Handling scrolling effects
 	const updateScrollProgress = useCallback(() => {
 		if (scrollRef.current) {
 			const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
@@ -70,9 +84,13 @@ export default function Home() {
 		}
 	}, []);
 
+	const internalRef = useRef<HTMLDivElement>(null);
+	// Expose the internal ref to parent
+	useImperativeHandle(scrollRef, () => internalRef.current as HTMLDivElement);
+
 	return (
 		<SoftPageFade>
-			<div className="bg-secondary">
+			<div className={`${pageStyle.main} bg-secondary`}>
 				<HeroSection />
 
 				<section className="py-0">
@@ -82,10 +100,15 @@ export default function Home() {
 				{/* FEATURED PROJECTS with stacking animation */}
 
 				<motion.section className="px-4 sm:px-6 md:px-20 lg:px-40 ">
-					<List />
+					<Text
+						as="h3"
+						className="sticky top-0  py-4 mb-4  text-center text-dimlight font-serif">
+						FEATURED PROJECTS
+					</Text>
+					<FeaturedProjects />
 				</motion.section>
 
-				<div className="w-fit mt-10 md:mt-20 mx-auto group">
+				<div className="w-fit mt-60 mb-20 mx-auto group">
 					<Button
 						variant="outline"
 						url={"/portfolio"}
@@ -102,19 +125,21 @@ export default function Home() {
 					<motion.div className="shadow-lg shadow-black/10 md:py-10 ">
 						<Text
 							as="h2"
-							className="text-light mb-4">
+							className="text-light mb-4 font-serif">
 							Articles
 						</Text>
 						<div className="mb-10">
 							<AnimatedCard>
-								<ArticleCard
+								<div
+									ref={internalRef}
 									onScroll={updateScrollProgress}
-									ref={scrollRef}
-								/>
+									className="overflow-x-auto hide-scrollbar">
+									<ArticleCard isThree={false} />
+								</div>
 							</AnimatedCard>
 						</div>
 						{/* Navigation Arrows */}
-						<div className="flex items-center justify-end gap-2 py-6 md:py-10">
+						<div className="flex items-center justify-end gap-2 py-3 md:py-5">
 							<span
 								onClick={() => handleArrowClick("left")}
 								className="cursor-pointer w-fit p-3 hover:bg-[#252e43] rounded-full transition-all duration-300 ease-in-out">
@@ -127,10 +152,10 @@ export default function Home() {
 							</span>
 						</div>
 						{/* Progress bar */}
-						<div className="bg-[#252e43] rounded-xl h-1 mb-10 md:mb-20 w-full overflow-hidden">
+						<div className="bg-card rounded-xl h-1 mb-10 md:mb-20 w-full overflow-hidden">
 							<div
 								style={{ width: `${scrollProgress * 100}%` }}
-								className="h-full rounded-xl bg-gradient-to-r from-white via-[#bddafe] to-[#9bbce5] transition-all duration-200"></div>
+								className="h-full rounded-xl bg-gradient-to-r from-white via-[#bddafe] to-[#9bbce5] transition-[width] duration-700 ease-in-out"></div>
 						</div>
 					</motion.div>
 				</section>

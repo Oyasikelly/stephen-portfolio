@@ -18,7 +18,7 @@ export default function Footer() {
 	};
 
 	return (
-		<footer className="pb-10 md:pb-20">
+		<footer className=" relative z-30 bg-secondary font-serif">
 			<div className="h-[2px] bg-gradient-to-r from-[#080d18] via-[#ffffffb4] to-[#080d18]"></div>
 
 			<div className="max-w-7xl my-4 mx-auto px-4 sm:px-6">

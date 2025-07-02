@@ -1,29 +1,133 @@
 "use client";
-import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import React, { forwardRef, ReactElement } from "react";
 import { FaClock } from "react-icons/fa";
 import articles from "../data/articles";
-import Button from "./Button";
-import { Text } from "./Text";
-import { colors } from "@/libs/styles/colors";
+import { FaArrowRight } from "react-icons/fa6";
 
 interface ArticleCardProps {
-	onScroll?: () => void;
+	setIsThree?: () => void;
+	isThree?: boolean;
+	articleProp?: any; // Replace 'any' with the actual type if known
+}
+interface cardContainerProps {
+	article: any;
+	key: any;
+}
+
+function CardContainer({ article, key }: cardContainerProps) {
+	return (
+		<div
+			key={key}
+			className="bg-card border border-[#252e43] rounded-xl p-5 flex shrink-0 flex-col justify-between min-h-[420px] max-w-[370px] mx-auto shadow-md transition-transform duration-300 hover:-translate-y-1 group">
+			{/* Meta Row */}
+
+			<div className="flex items-center justify-between mb-4">
+				<span className="text-dimlight flex items-center gap-2 text-sm font-normal">
+					<FaClock className="text-xs" /> {article.time} min read
+				</span>
+				<span className="bg-secondary text-xs text-white font-bold px-2.5 py-1 rounded uppercase tracking-wide">
+					{article.status.toUpperCase()}
+				</span>
+			</div>
+			{/* Image */}
+			<div className="relative overflow-hidden flex justify-center items-center mb-4">
+				<img
+					src={article.img}
+					alt={article.title}
+					className="rounded-lg w-full h-40 object-cover bg-[#222] transition-transform duration-300 group-hover:scale-102"
+					style={{ maxWidth: 320 }}
+				/>
+				<div className="absolute -inset-2 rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+			</div>
+			{/* Title */}
+			<h3 className="text-white text-lg font-semibold mb-6 leading-snug line-clamp-2">
+				{article.title}
+			</h3>
+			{/* Learn more */}
+			<div className="mt-auto w-fit">
+				<a
+					href={`/articles/${article.slug}`}
+					className="font-bold text-white flex items-center gap-2 hover:underline group">
+					Learn more
+					<FaArrowRight className="text-primary group-hover:translate-x-1 transition-transform duration-200" />
+				</a>
+			</div>
+		</div>
+	);
 }
 
 const ArticleCard = forwardRef<HTMLDivElement, ArticleCardProps>(
-	({ onScroll }, ref) => {
-		const internalRef = useRef<HTMLDivElement>(null);
-
-		// Expose the internal ref to parent
-		useImperativeHandle(ref, () => internalRef.current as HTMLDivElement);
-
+	({ setIsThree, isThree, articleProp }, ref) => {
 		return (
 			<div
-				ref={internalRef}
-				className="w-full flex gap-4 overflow-x-auto hide-scrollbar"
-				onScroll={onScroll}>
-				{articles.map((article, index) => (
-					<div
+				className={`${
+					isThree === true
+						? "grid grid-cols-1 md:grid-cols-3 gap-8"
+						: "flex flex gap-4 "
+				} w-full `}
+				ref={ref}>
+				{isThree === true
+					? articles.slice(0, 3).map((article, index) => (
+							<CardContainer
+								article={article}
+								key={article.slug}
+							/>
+					  ))
+					: articles.map((article, index) => (
+							<CardContainer
+								article={article}
+								key={article.slug}
+							/>
+					  ))}
+			</div>
+		);
+	}
+);
+
+export default ArticleCard;
+
+// {
+// 	articles.map((article, index) => (
+// 		<div
+// 			key={index}
+// 			className="bg-card border border-[#252e43] rounded-xl p-5 flex shrink-0 flex-col justify-between min-h-[420px] max-w-[370px] mx-auto shadow-md group">
+// 			{/* Meta Row */}
+// 			<div className="flex items-center justify-between mb-4">
+// 				<span className="text-dimlight flex items-center gap-2 text-sm font-normal">
+// 					<FaClock className="text-xs" /> {article.time} min read
+// 				</span>
+// 				<span className="bg-secondary text-xs text-white font-bold px-2.5 py-1 rounded uppercase tracking-wide">
+// 					{article.status.toUpperCase()}
+// 				</span>
+// 			</div>
+// 			{/* Image */}
+// 			<div className="relative flex justify-center items-center mb-4">
+// 				<img
+// 					src={article.img}
+// 					alt={article.title}
+// 					className="rounded-lg w-full h-40 object-cover bg-[#222] transition-transform duration-300 group-hover:scale-105"
+// 					style={{ maxWidth: 320 }}
+// 				/>
+// 				<div className="absolute -inset-2 rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+// 			</div>
+// 			{/* Title */}
+// 			<h3 className="text-white text-lg font-semibold mb-6 leading-snug line-clamp-2">
+// 				{article.title}
+// 			</h3>
+// 			{/* Learn more */}
+// 			<div className="mt-auto w-fit">
+// 				<a
+// 					href={`/articles/${article.slug}`}
+// 					className="font-bold text-white flex items-center gap-2 hover:underline group">
+// 					Learn more
+// 					<FaArrowRight className="text-primary group-hover:translate-x-1 transition-transform duration-200" />
+// 				</a>
+// 			</div>
+// 		</div>
+// 	));
+// }
+{
+	/* <div
 						key={index}
 						className="flex-shrink-0 p-4 pb-6 md:pb-10 w-[280px] sm:w-[320px] md:w-[400px] rounded-xl bg-card duration-700 ease-out shadow-xl">
 						<div className="h-[180px] sm:h-[220px] md:h-[300px] rounded-xl">
@@ -49,11 +153,5 @@ const ArticleCard = forwardRef<HTMLDivElement, ArticleCardProps>(
 							className="mt">
 							{article.title}
 						</Text>
-					</div>
-				))}
-			</div>
-		);
-	}
-);
-
-export default ArticleCard;
+					</div> */
+}
