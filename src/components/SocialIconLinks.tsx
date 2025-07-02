@@ -2,6 +2,7 @@
 
 import Icons from "@/data/Icons";
 import { motion } from "framer-motion";
+import React from "react";
 
 export default function SocialIconLinks() {
 	return (
@@ -25,8 +26,11 @@ export default function SocialIconLinks() {
 					{/* Rope */}
 					<span className="rope group-hover:rope-animate" />
 					{/* Icon */}
-					<span className="icon-wrapper transition-all duration-200 group-hover:scale-110 hover:scale-110 hover:bg-[#9BBCE5] rounded-full flex items-center justify-center">
-						<icon.Icon className="w-6 h-6 text-white/40 p-1" />
+					<span className="icon-wrapper group-hover:icon-pulled">
+						{React.createElement(icon.Icon, {
+							className:
+								"w-6 h-6 text-[#9BBCE5] p-1 border border-[#9BBCE5] rounded-full",
+						})}
 					</span>
 				</a>
 			))}

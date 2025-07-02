@@ -24,7 +24,7 @@ export default function List({ visibleCount = 4 }) {
 	return (
 		<section
 			ref={sectionRef}
-			className="relative w-full -top-32 ">
+			className="relative w-full -top-36 md:-top-48 lg:-top-50 ">
 			<motion.div
 				style={{
 					position: "sticky",
