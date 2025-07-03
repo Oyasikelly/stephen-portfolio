@@ -7,6 +7,7 @@
 		"time": 5,
 		"date": "27 June 2025",
 		"status": "growth",
+		"categories": ["growth"],
 		"sections": [
 			{ "id": "introduction", "title": "Introduction" },
 			{ "id": "Technical_Skills", "title": "Technical Skills and Expertise" },
@@ -27,6 +28,7 @@
 		"time": 2,
 		"date": "27 June 2025",
 		"status": "dev",
+		"categories": ["dev"],
 		"sections": [
 			{ "id": "overview", "title": "Overview" },
 			{ "id": "concepts", "title": "Core Concepts" },
@@ -46,7 +48,9 @@
 		"img": "/assets/articles/getting-started-nodejs.png",
 		"time": 3,
 		"date": "23 June 2025",
-		"status": "dev",
+		"status": "growth",
+		"categories": ["growth"],
+
 		"sections": [
 			{ "id": "why-node", "title": "Why Choose Node.js?" },
 			{ "id": "setup", "title": "Setting Up Your Environment" },
@@ -67,6 +71,7 @@
 		"time": 5,
 		"date": "23 June 2025",
 		"status": "dev",
+		"categories": ["dev"],
 
 		"sections": [
 			{ "id": "importance", "title": "Importance of SEO" },
@@ -88,6 +93,7 @@
 		"time": 5,
 		"date": "23 June 2025",
 		"status": "dev",
+		"categories": ["dev"],
 		"sections": [
 			{ "id": "prep", "title": "Preparing Your App" },
 			{ "id": "vercel-setup", "title": "Setting Up Vercel" },

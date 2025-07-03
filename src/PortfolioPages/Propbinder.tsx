@@ -1,4 +1,5 @@
-import AnyPortfolio from "./AnyPortfolio";
+import NextProjects from "@/ArticlePages/NextProjects";
+import AnyPortfolio from "../components/AnyPortfolio";
 
 interface Section {
 	id: string;
@@ -12,7 +13,7 @@ interface PorfolioProps {
 	sections: Section[];
 }
 
-export default function Checkout({ content, sections }: PorfolioProps) {
+export default function Propbinder({ content, sections }: PorfolioProps) {
 	return (
 		<>
 			<AnyPortfolio

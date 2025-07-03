@@ -11,6 +11,7 @@ interface ButtonProps {
 	onClick?: () => void;
 	showArrow?: boolean;
 	className?: string;
+	disabled?: boolean;
 }
 
 const primary = "var(--primary)";
@@ -23,6 +24,7 @@ const Button = ({
 	onClick,
 	showArrow = false,
 	className = "",
+	disabled = false,
 }: ButtonProps) => {
 	const [hovered, setHovered] = useState(false);
 
@@ -58,7 +60,13 @@ const Button = ({
 	}
 
 	const arrowIcon = showArrow ? (
-		<FaArrowUpRightFromSquare className="ml-1 text-inherit text-base" />
+		<FaArrowUpRightFromSquare
+			style={{
+				color: hovered ? "var(--secondary)" : "var(--primary)",
+				transition: "0.3s color easeOut",
+			}}
+			className="ml-1 text-inherit"
+		/>
 	) : null;
 
 	const combinedClass = `${baseStyles} ${className}`.trim();
@@ -83,11 +91,14 @@ const Button = ({
 
 	return (
 		<button
-			className={combinedClass}
+			className={`${combinedClass} ${
+				disabled ? "opacity-50 cursor-not-allowed" : ""
+			}`}
 			style={style}
 			onClick={onClick}
 			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}>
+			onMouseLeave={handleMouseLeave}
+			disabled={!!disabled}>
 			{children}
 			{arrowIcon}
 		</button>

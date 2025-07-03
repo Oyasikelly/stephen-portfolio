@@ -1,5 +1,6 @@
-import NextProjects from "@/components/NextProjects";
-import AnyArticle from "./AnyArticle";
+import NextProjects from "@/ArticlePages/NextProjects";
+import AnyArticle from "../components/AnyArticle";
+import HeadingDetails from "@/components/HeadingDetails";
 
 interface ArticleProps {
 	id: string;
@@ -10,8 +11,12 @@ interface ArticleProps {
 }
 
 export default function MasteringCssGrid({ content, sections }: ArticleProps) {
+	console.log(content, sections);
+
 	return (
 		<>
+			{/* <HeadingDetails /> */}
+
 			<AnyArticle
 				id={""}
 				title={""}

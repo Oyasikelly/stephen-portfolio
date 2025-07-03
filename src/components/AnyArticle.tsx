@@ -1,4 +1,4 @@
-import NextProjects from "@/components/NextProjects";
+import NextProjects from "@/ArticlePages/NextProjects";
 import PopInOnScroll from "@/components/PopInOnScroll";
 
 interface ArticleProps {
@@ -49,7 +49,6 @@ export default function AnyArticle({ content, sections }: ArticleProps) {
 					className="text-md md:text-xl font-bold border-b-2 border-[#252e43] pb-2">
 					NEXT PROJECTS
 				</PopInOnScroll>
-				<NextProjects />
 			</section>
 		</>
 	);

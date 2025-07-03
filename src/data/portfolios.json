@@ -3,25 +3,26 @@
 		"slug": "checkout",
 		"type": "portfolio",
 		"title": "Checkout",
+		"time": 5,
+		"date": "27 June 2025",
+		"categories": ["dev", "product-design", "open-source"],
 		"sections": [
 			{ "id": "introduction", "title": "Introduction" },
 			{ "id": "features", "title": "Features" },
-			{ "id": "my-role", "title": "My role" },
+			{ "id": "role", "title": "My role" },
 			{ "id": "links", "title": "Links" }
 		],
-		"content": [
-			"Checkout.com, is an international financial technology company which processes payments for other companies. Founded as Opus Payments in 2009, it is headquartered in London, United Kingdom. It had a valuation of $40 billion USD in 2022, making it the most valuable European fintech startup.",
-			"Not guaranteed your inventory, generate millions a month.",
-			"Time limited keys – Manage keys that have a limited lifespan.",
-			"Rate Limiting – Limit the interval of verifying a key.",
-			"Capped Usage – Manage keys that have a maximum number of usage.",
-			"IP Whitelisting – Allow your choice IP addresses to have access to your services."
-		]
+		"content": {
+			"introduction": "Checkout.com, is an international financial technology company which processes payments for other companies. Founded as Opus Payments in 2009, it is headquartered in London, United Kingdom. It had a valuation of $40 billion USD in 2022, making it the most valuable European fintech startup."
+		}
 	},
 	"propbinder": {
 		"slug": "propbinder",
 		"type": "portfolio",
 		"title": "Propbinder.com",
+		"time": 5,
+		"date": "27 June 2025",
+		"categories": ["dev", "product-design", "open-source"],
 		"sections": [
 			{ "id": "introduction", "title": "Introduction" },
 			{ "id": "features", "title": "Features" },
@@ -42,6 +43,9 @@
 		"slug": "pelago",
 		"type": "portfolio",
 		"title": "Pelago.com",
+		"time": 5,
+		"date": "27 June 2025",
+		"categories": ["dev", "product-design", "open-source"],
 		"sections": [
 			{ "id": "introduction", "title": "Introduction" },
 			{ "id": "features", "title": "Features" },
@@ -62,6 +66,9 @@
 		"slug": "datkey",
 		"type": "portfolio",
 		"title": "datkey.com",
+		"time": 5,
+		"date": "27 June 2025",
+		"categories": ["dev", "product-design", "open-source"],
 		"sections": [
 			{ "id": "introduction", "title": "Introduction" },
 			{ "id": "features", "title": "Features" },

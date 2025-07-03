@@ -4,11 +4,14 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import TestimonialData from "@/data/testimonial";
 import { Text } from "./Text";
+import { motion, AnimatePresence } from "framer-motion";
+import { colors } from "@/libs/styles/colors";
 
 export default function Testimonials() {
 	const [expandedTestimonials, setExpandedTestimonials] = useState<{
 		[key: number]: boolean;
 	}>({});
+	const [modalIndex, setModalIndex] = useState<number | null>(null);
 	const [cardWidth, setCardWidth] = useState(400); // Default card width
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const maxLength = 150; // Maximum characters before truncation
@@ -71,6 +74,9 @@ export default function Testimonials() {
 		return text.substring(0, maxLength) + "...";
 	};
 
+	const openModal = (index: number) => setModalIndex(index);
+	const closeModal = () => setModalIndex(null);
+
 	return (
 		<section className="w-full">
 			<div className="px-4 sm:px-6 md:px-20 lg:px-40 py-10 flex flex-col justify-center ">
@@ -86,34 +92,31 @@ export default function Testimonials() {
 					{TestimonialData.map((testimonial, index) => (
 						<div
 							key={index}
-							className="testimonial-card min-w-[280px] sm:min-w-[320px] md:min-w-[400px] lg:min-w-[450px] bg-card rounded-xl p-6 md:p-8 testimonial-border flex flex-col justify-between gap-4 snap-start">
-							<div className="flex-1">
+							className="testimonial-card min-w-[280px] sm:min-w-[320px] md:min-w-[400px] lg:min-w-[700px] bg-card rounded-xl p-8 md:p-10 flex flex-col justify-between gap-6 snap-start shadow-lg border border-[#252e43]">
+							<Text
+								as="p"
+								className="italic text-[1.5rem] md:text-2xl text-dimlight font-serif leading-relaxed mb-8">
+								"{truncateText(testimonial.testimony, index)}"
+							</Text>
+							{testimonial.testimony.length > maxLength && (
+								<button
+									onClick={() => openModal(index)}
+									className="font-bold text-base mt-2 flex items-center gap-2 text-light hover:text-primary transition-colors">
+									Show more
+									<span className="text-primary text-lg">✖</span>
+								</button>
+							)}
+							<div className="mt-4">
 								<Text
 									as="p"
-									className="text-dimlight italic">
-									"{truncateText(testimonial.testimony, index)}"
+									className="font-serif text-light text-xl mb-1">
+									{testimonial.name}
 								</Text>
-								{testimonial.testimony.length > maxLength && (
-									<button
-										onClick={() => toggleTestimonial(index)}
-										className="text-primary text-sm hover:underline transition-all duration-200 mt-2 font-medium">
-										{expandedTestimonials[index] ? "See less" : "See more"}
-									</button>
-								)}
-							</div>
-							<div className="mt-4">
-								<span>
-									<Text
-										as="p"
-										className="font-serif">
-										{testimonial.name}
-									</Text>
-								</span>
-								<span></span>
-								<p className="text-white font-semibold text-sm md:text-base"></p>
-								<p className="text-primary font-serif">
+								<Text
+									as="p"
+									className="text-primary text-base">
 									{testimonial.position}
-								</p>
+								</Text>
 							</div>
 						</div>
 					))}
@@ -133,6 +136,45 @@ export default function Testimonials() {
 					</span>
 				</div>
 			</div>
+
+			{/* Modal for full testimonial */}
+			<AnimatePresence>
+				{modalIndex !== null && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+						<motion.div
+							initial={{ scale: 0.8, opacity: 0 }}
+							animate={{ scale: 1, opacity: 1 }}
+							exit={{ scale: 0.8, opacity: 0 }}
+							transition={{ type: "spring", stiffness: 300, damping: 25 }}
+							className="relative bg-card rounded-2xl shadow-2xl p-8 md:p-14 max-w-3xl w-full mx-4">
+							<button
+								onClick={closeModal}
+								className="absolute top-4 right-4 text-2xl text-dimlight hover:text-primary transition-colors">
+								&times;
+							</button>
+							<Text
+								as="p"
+								className="italic text-[1.5rem] md:text-2xl text-dimlight font-serif leading-relaxed mb-8">
+								"{TestimonialData[modalIndex].testimony}"
+							</Text>
+							<Text
+								as="p"
+								className="font-serif text-light text-xl mb-1">
+								{TestimonialData[modalIndex].name}
+							</Text>
+							<Text
+								as="p"
+								className="text-primary text-base">
+								{TestimonialData[modalIndex].position}
+							</Text>
+						</motion.div>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</section>
 	);
 }

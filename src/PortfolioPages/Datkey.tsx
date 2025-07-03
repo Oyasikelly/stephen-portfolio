@@ -1,5 +1,5 @@
-import NextProjects from "@/components/NextProjects";
-import AnyPortfolio from "./AnyPortfolio";
+import NextProjects from "@/ArticlePages/NextProjects";
+import AnyPortfolio from "../components/AnyPortfolio";
 
 interface Section {
 	id: string;
@@ -13,7 +13,7 @@ interface PorfolioProps {
 	sections: Section[];
 }
 
-export default function Propbinder({ content, sections }: PorfolioProps) {
+export default function Datkey({ content, sections }: PorfolioProps) {
 	return (
 		<>
 			<AnyPortfolio

@@ -1,5 +1,4 @@
-import NextProjects from "@/components/NextProjects";
-import portfolioPreviews from "@/data/FeaturedProjects";
+// import portfolioPreviews from "@/data/FeaturedProjects";
 import PopInOnScroll from "@/components/PopInOnScroll";
 
 interface Section {
@@ -56,7 +55,6 @@ export default function AnyPortfolio({ content, sections }: PorfolioProps) {
 					ease={[0.16, 1, 0.3, 1]}>
 					NEXT PROJECTS
 				</PopInOnScroll>
-				<NextProjects />
 			</section>
 		</>
 	);

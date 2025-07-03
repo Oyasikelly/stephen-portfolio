@@ -11,14 +11,13 @@ interface ArticleCardProps {
 }
 interface cardContainerProps {
 	article: any;
-	key: any;
+	index: any;
 }
 
-function CardContainer({ article, key }: cardContainerProps) {
+function CardContainer({ article, index }: cardContainerProps) {
+	console.log(index);
 	return (
-		<div
-			key={key}
-			className="bg-card border border-[#252e43] rounded-xl p-5 flex shrink-0 flex-col justify-between min-h-[420px] max-w-[370px] mx-auto shadow-md transition-transform duration-300 hover:-translate-y-1 group">
+		<div className="bg-card border border-[#252e43] rounded-xl p-5 flex shrink-0 flex-col justify-between min-h-[420px] max-w-[370px] mx-auto shadow-md transition-transform duration-300 hover:-translate-y-1 group">
 			{/* Meta Row */}
 
 			<div className="flex items-center justify-between mb-4">
@@ -57,7 +56,7 @@ function CardContainer({ article, key }: cardContainerProps) {
 }
 
 const ArticleCard = forwardRef<HTMLDivElement, ArticleCardProps>(
-	({ setIsThree, isThree, articleProp }, ref) => {
+	({ isThree }, ref) => {
 		return (
 			<div
 				className={`${
@@ -67,15 +66,17 @@ const ArticleCard = forwardRef<HTMLDivElement, ArticleCardProps>(
 				} w-full `}
 				ref={ref}>
 				{isThree === true
-					? articles.slice(0, 3).map((article, index) => (
+					? articles.slice(0, 3).map((article, i) => (
 							<CardContainer
 								article={article}
+								index={1 + (i ?? 0)}
 								key={article.slug}
 							/>
 					  ))
 					: articles.map((article, index) => (
 							<CardContainer
 								article={article}
+								index={index}
 								key={article.slug}
 							/>
 					  ))}

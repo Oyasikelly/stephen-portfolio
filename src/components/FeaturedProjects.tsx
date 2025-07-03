@@ -9,7 +9,7 @@ export default function FeaturedProjects() {
 					{i <= 4 ? (
 						<FeaturedProjectCards
 							key={i}
-							index={i}
+							index={i + 1}
 							{...project}
 						/>
 					) : null}

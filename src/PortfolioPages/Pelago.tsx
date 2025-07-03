@@ -1,5 +1,5 @@
-import NextProjects from "@/components/NextProjects";
-import AnyPortfolio from "./AnyPortfolio";
+import NextProjects from "@/ArticlePages/NextProjects";
+import AnyPortfolio from "../components/AnyPortfolio";
 
 interface Section {
 	id: string;

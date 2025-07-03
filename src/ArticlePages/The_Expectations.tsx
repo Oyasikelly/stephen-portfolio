@@ -1,4 +1,4 @@
-import AnyArticle from "./AnyArticle";
+import AnyArticle from "../components/AnyArticle";
 
 interface ArticleProps {
 	id: string;

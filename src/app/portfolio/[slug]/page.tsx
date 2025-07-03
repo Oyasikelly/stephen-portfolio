@@ -1,18 +1,20 @@
-// app/portfolio/[slug]/page.tsx
 import TopHeader from "@/components/TopHeader";
 import { notFound } from "next/navigation";
 import portfolioData from "@/data/portfolios.json";
 
 // Components
-import Checkout from "@/components/Checkout";
-import EcommerceUI from "@/components/Propbinder";
-import PortfolioRevamp from "@/components/Pelago";
-import Propbinder from "@/components/Propbinder";
-import Pelago from "@/components/Pelago";
-import Datkey from "@/components/Datkey";
+import Checkout from "@/PortfolioPages/Checkout";
+import EcommerceUI from "@/PortfolioPages/Propbinder";
+import PortfolioRevamp from "@/PortfolioPages/Pelago";
+import Propbinder from "@/PortfolioPages/Propbinder";
+import Pelago from "@/PortfolioPages/Pelago";
+import Datkey from "@/PortfolioPages/Datkey";
 import SoftPageFade from "@/components/SoftPageFade";
 import SocialIconLinks from "@/components/SocialIconLinks";
 import HorizontalLine from "@/components/HorizontalLine";
+import PrevNexCardClientWrapper from "@/components/PrevNexCardClientWrapper";
+import ProjectImage from "@/components/ProjectImage";
+import { Text } from "@/components/Text";
 // import EcommerceUI from "@/components/EcommerceUI";
 // import PortfolioRevamp from "@/components/PortfolioRevamp";
 
@@ -25,7 +27,7 @@ interface ContentItem {
 	slug: string;
 	title: string;
 	type: "portfolio";
-	content: string[];
+	content: string[] | Record<string, any>;
 	sections: Section[];
 }
 
@@ -42,11 +44,30 @@ export default async function PortfolioPage({
 	params: Promise<{ slug: string }>;
 }) {
 	const { slug } = await params;
-	const content = (portfolioData as Record<string, ContentItem>)[slug];
+	const keys = Object.keys(portfolioData);
+	const idx = keys.indexOf(slug);
+	const prevKey = idx > 0 ? keys[idx - 1] : null;
+	const nextKey = idx < keys.length - 1 ? keys[idx + 1] : null;
+	const prev = prevKey ? (portfolioData as any)[prevKey] : null;
+	const next = nextKey ? (portfolioData as any)[nextKey] : null;
+	const content = (portfolioData as any)[slug];
 	if (!content || content.type !== "portfolio") return notFound();
 
 	const PortfolioComponent = portfolioComponentMap[slug];
 	if (!PortfolioComponent) return notFound();
+
+	// Helper to get description and image
+	const getDescription = (item: any) => {
+		if (Array.isArray(item.content)) return item.content[0];
+		if (typeof item.content === "object" && item.content.introduction)
+			return item.content.introduction;
+		return "";
+	};
+	// const getImage = (item: any) => {
+	// 	const imgPath = `/assets/portfolio/${item.slug}.png`;
+	// 	// Ideally, check if file exists, but fallback handled in PrevNexCard
+	// 	return imgPath;
+	// };
 
 	return (
 		<SoftPageFade>
@@ -57,10 +78,10 @@ export default async function PortfolioPage({
 				/>
 
 				<div className="mt-6 flex justify-center">
-					<img
+					<ProjectImage
 						src={`/assets/portfolio/${content.slug}.png`}
 						alt={content.title}
-						className="w-[60%] h-auto object-cover object-center rounded-lg"
+						small={false}
 					/>
 				</div>
 
@@ -70,11 +91,13 @@ export default async function PortfolioPage({
 				<div className="px-4 sm:px-6 md:px-8 lg:px-40 bg-[#111724]">
 					<section className="pt-15 my-0 flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-8">
 						<div className="w-full lg:w-[20%] relative z-20 lg:sticky top-4">
-							<h2 className="text-base sm:text-lg lg:text-xl font-semibold">
+							<Text
+								as="h3"
+								className="text-light font-serif">
 								ON THIS PAGE
-							</h2>
+							</Text>
 							<ul className="mt-2 space-y-1">
-								{content.sections.map((link, index) => (
+								{content.sections.map((link: Section, index: number) => (
 									<li key={index}>
 										<a
 											href={`#${link.id}`}
@@ -88,11 +111,8 @@ export default async function PortfolioPage({
 
 						<div className="w-full lg:w-[55%] mb-6 pb-4">
 							<PortfolioComponent
-								id={content.slug}
-								title={content.title}
-								content={content.content}
-								sections={content.sections}
 								link={`/portfolio/${content.slug}`}
+								{...content}
 							/>
 						</div>
 
@@ -100,6 +120,33 @@ export default async function PortfolioPage({
 							<SocialIconLinks />
 						</div>
 					</section>
+					{/* Portfolio navigation card */}
+					<div className="flex justify-center items-center">
+						<PrevNexCardClientWrapper
+							prev={
+								prev
+									? {
+											slug: prev.slug,
+											title: prev.title,
+											description: getDescription(prev),
+											image: prev.img,
+											link: `/portfolio/${prev.slug}`,
+									  }
+									: undefined
+							}
+							next={
+								next
+									? {
+											slug: next.slug,
+											title: next.title,
+											description: getDescription(next),
+											image: next.img,
+											link: `/portfolio/${next.slug}`,
+									  }
+									: undefined
+							}
+						/>
+					</div>
 				</div>
 			</div>
 		</SoftPageFade>

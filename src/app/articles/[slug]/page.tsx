@@ -2,13 +2,18 @@
 import { Metadata } from "next";
 import TopHeader from "@/components/TopHeader";
 import { notFound } from "next/navigation";
-import TheExpectations from "@/components/The_Expectations";
-import MasteringCssGrid from "@/components/MasteringCssGrid";
-import SeoInModernWeb from "@/components/SeoInModernWeb";
+import TheExpectations from "@/ArticlePages/The_Expectations";
+import MasteringCssGrid from "@/ArticlePages/MasteringCssGrid";
+import SeoInModernWeb from "@/ArticlePages/SeoInModernWeb";
 import ArticlesData from "@/data/articles.json";
 import SoftPageFade from "@/components/SoftPageFade";
 import HorizontalLine from "@/components/HorizontalLine";
 import SocialIconLinks from "@/components/SocialIconLinks";
+import PrevNexCardClientWrapper from "@/components/PrevNexCardClientWrapper";
+import ProjectImage from "@/components/ProjectImage";
+import HeadingDetails from "@/components/HeadingDetails";
+import YourClientComponent from "@/components/YourClientComponent";
+import ShareIdeaCard from "@/components/ShareIdeaCard";
 
 interface Section {
 	id: string;
@@ -19,7 +24,7 @@ interface ContentItem {
 	slug: string;
 	title: string;
 	type: "articles";
-	content: string[];
+	content: string[] | Record<string, any>;
 	sections: Section[];
 }
 
@@ -51,12 +56,25 @@ export async function generateMetadata({
 
 export default async function ArticlePage({ params }: PageProps) {
 	const { slug } = await params;
+	const keys = Object.keys(ArticlesData);
+	const idx = keys.indexOf(slug);
+	const prevKey = idx > 0 ? keys[idx - 1] : null;
+	const nextKey = idx < keys.length - 1 ? keys[idx + 1] : null;
+	const prev = prevKey ? (ArticlesData as any)[prevKey] : null;
+	const next = nextKey ? (ArticlesData as any)[nextKey] : null;
 	const content = (ArticlesData as Record<string, ContentItem>)[slug];
 	if (!content || content.type !== "articles") return notFound();
 
 	// Get the appropriate component for the slug
 	const ArticleComponent = articleComponentMap[slug];
 	if (!ArticleComponent) return notFound();
+
+	const getDescription = (item: any) => {
+		if (Array.isArray(item.content)) return item.content[0];
+		if (typeof item.content === "object" && item.content.introduction)
+			return item.content.introduction;
+		return "";
+	};
 
 	console.log(content);
 	return (
@@ -71,10 +89,10 @@ export default async function ArticlePage({ params }: PageProps) {
 					}`}
 				/>
 				<div className="mt-6 flex justify-center">
-					<img
+					<ProjectImage
 						src={`/assets/articles/${content.slug}.png`}
 						alt={content.title}
-						className="w-[60%] h-auto object-cover object-center rounded-lg"
+						small={false}
 					/>
 				</div>
 				<div className="mt-6">
@@ -83,7 +101,7 @@ export default async function ArticlePage({ params }: PageProps) {
 				<div className="px-4 sm:px-6 md:px-8 lg:px-40 bg-[#111724]">
 					<section className="pt-15 my-0 flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-8">
 						{/* Sidebar Links */}
-						<div className="w-full lg:w-[20%] relative z-20 lg:sticky top-4">
+						<div className="w-full lg:w-[10%] relative z-20 lg:sticky top-4">
 							<h2 className="text-base sm:text-lg lg:text-xl font-semibold">
 								ON THIS PAGE
 							</h2>
@@ -101,24 +119,46 @@ export default async function ArticlePage({ params }: PageProps) {
 						</div>
 
 						{/* Article Content */}
-						<div className="w-full lg:w-[55%] mb-6 pb-4">
-							<div>{}</div>
+						<div className="w-full lg:w-[80%] mb-6 pb-4">
+							<YourClientComponent content={content} />
+
 							<ArticleComponent
-								id={content.slug}
-								// date={content.date}
-								// time={content.time}
-								title={content.title}
-								content={content.content}
-								sections={content.sections}
 								link={`/articles/${content.slug}`}
+								{...content}
 							/>
 						</div>
 
 						{/* Socials */}
-						<div className="w-full lg:w-[20%] pb-6 lg:pb-0 flex justify-center lg:justify-end lg:items-start gap-3 lg:sticky top-4">
-							<SocialIconLinks />
-						</div>
+						<ShareIdeaCard />
 					</section>
+
+					{/* Prev/Next navigation card */}
+					<div className="flex justify-center items-center">
+						<PrevNexCardClientWrapper
+							prev={
+								prev
+									? {
+											slug: prev.slug,
+											title: prev.title,
+											description: getDescription(prev),
+											image: prev.img,
+											link: `/articles/${prev.slug}`,
+									  }
+									: undefined
+							}
+							next={
+								next
+									? {
+											slug: next.slug,
+											title: next.title,
+											description: getDescription(next),
+											image: next.img,
+											link: `/articles/${next.slug}`,
+									  }
+									: undefined
+							}
+						/>
+					</div>
 				</div>
 			</div>
 		</SoftPageFade>

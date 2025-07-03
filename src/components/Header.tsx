@@ -9,6 +9,8 @@ import { FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePageTransition } from "@/context/PageTransitionContext";
 import { colors } from "@/libs/styles/colors";
+import HorizontalLine from "./HorizontalLine";
+import { Text } from "./Text";
 
 export default function Header() {
 	const pathName = usePathname();
@@ -29,7 +31,11 @@ export default function Header() {
 							key={link.href}
 							href={link.href}
 							className={`${
-								link.href == pathName
+								(
+									link.href === "/"
+										? pathName === "/"
+										: pathName.startsWith(link.href)
+								)
 									? "text-dimlight relative before:content-['.'] before:text-[#c6e1f5] before:text-4xl before:absolute before:top-5 before:left-1/2 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:flex before:justify-center before:items-center"
 									: ""
 							} font-medium text-dimlight`}>
@@ -75,7 +81,6 @@ export default function Header() {
 					</motion.div>
 				</div>
 			</motion.header>
-
 			{/* Fancy Mobile Menu */}
 			<AnimatePresence>
 				{isOpen && (
@@ -101,24 +106,23 @@ export default function Header() {
 							animate={{ x: 0 }}
 							exit={{ x: "100%" }}
 							transition={{ type: "spring", damping: 25, stiffness: 200 }}
-							className="absolute right-0 top-0 h-full w-80 bg-gradient-to-b from-[#080d18]/95 to-[#111724]/95 backdrop-blur-2xl border-l border-[#252e43]/50 shadow-2xl">
+							className="absolute right-0 top-0 h-full w-80 bg-gradient-to-b bg-secondary backdrop-blur-2xl border-l border-[#252e43]/50 shadow-2xl">
 							{/* Header */}
-							<div className="flex justify-between items-center p-6 border-b border-[#252e43]/30">
-								<motion.h2
-									initial={{ opacity: 0, y: -20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.2 }}
-									className="text-xl font-bold text-white">
+							<div className="flex justify-between items-center p-6">
+								<Text
+									as="h2"
+									className="text-light">
 									Menu
-								</motion.h2>
+								</Text>
 								<motion.button
 									onClick={() => setIsOpen(false)}
 									whileHover={{ scale: 1.1, rotate: 90 }}
 									whileTap={{ scale: 0.9 }}
-									className="text-white/70 hover:text-white transition-colors">
+									className="text-dimlight">
 									<FaTimes size={20} />
 								</motion.button>
 							</div>
+
 							{/* Navigation Links */}
 							<nav className="flex flex-col p-6 space-y-2">
 								{navLinks.map((link, index) => (
@@ -190,15 +194,14 @@ export default function Header() {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ delay: 0.8 }}
-								className="p-6 text-center text-white/40 text-sm border-t border-[#252e43]/30">
+								className="p-6 text-center text-dimlight text-sm border-t border-[#252e43]/30">
 								© {new Date().getFullYear()} Stephen Okuanade
 							</motion.div>
 						</motion.div>
 					</motion.div>
 				)}
 			</AnimatePresence>
-
-			<div className="h-[2px] bg-gradient-to-r from-black via-[#ffffffb4] to-black"></div>
+			<HorizontalLine />
 		</>
 	);
 }
